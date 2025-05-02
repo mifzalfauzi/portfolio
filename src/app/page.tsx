@@ -23,14 +23,14 @@ export default function Page() {
     const [showModal, setShowModal] = useState(false);
 
     const handlePreview = () => {
-        window.open('/resume.pdf', '_blank');
+        window.open('/resume-v2.pdf', '_blank');
         setShowModal(false);
     };
 
     const handleDownload = () => {
         const link = document.createElement('a');
-        link.href = '/resume.pdf';
-        link.download = 'resume.pdf';
+        link.href = '/resume-v2.pdf';
+        link.download = 'resume-v2.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -198,7 +198,7 @@ export default function Page() {
                                 description="Responsive personal portfolio developed with NextJS and Tailwind CSS"
                                 image="/portfolio.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
-                                demoLink="https://demo.example.com"
+                                demoLink="https://mifzal-dev.vercel.app"
                                 tags={["Next.js", "Tailwind CSS"]}
                                 year="2025"
                                 details={

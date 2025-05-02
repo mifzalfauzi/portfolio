@@ -207,6 +207,7 @@ export default function Page() {
                                         <p>Features SSR, responsive design, and dark mode support.</p>
                                     </>
                                 }
+                                images={["prototype.png"]}
                             />
                             <ProjectCard
                                 title="Personal Portfolio"
@@ -243,8 +244,7 @@ export default function Page() {
                                             <li>Developed using Python (Django) for server-side development using MVT (Model-View-Template) architecture</li>
                                             <li>Constructed an NLP Voting Classifier Pipeline (Google Colab) utilizing machine learning algorithms and NLTK trained on 1500+ sample datasets for context-based assistant responses in Text Classification</li>
                                             <li>Enhanced chatbot responses functionality by API integration with OpenAI</li>
-                                            <li>Utilising phpMyAdmin to store data instances into relational tables</li>
-                                            <li>System deployment with PythonAnywhere</li>
+                                           
                                         </ul>
                                         <p>Associated with the National University of Malaysia</p>
                                     </>
@@ -265,8 +265,6 @@ export default function Page() {
                                         <ul className="list-disc list-inside">
                                             <li>Elected as Scrum Master from a team of five members to monitor progress throughout development within a span of three semesters (TTTU3404)</li>
                                             <li>Identified stakeholders and use cases for clear and concise project direction</li>
-                                            <li>Gathered and documented requirements for project proposal</li>
-                                            <li>Developed with HTML, CSS and JavaScript for client-side and PHP for server-side processes</li>
                                             <li>Developed with HTML, CSS and JavaScript for client-side and PHP for server-side processes</li>
                                             <li>Designed UI/UX requirements with Figma </li>
                                             <li>Utilising phpMyAdmin to store data instances into relational tables in ensuring efficient management and retrieval of structured data</li>

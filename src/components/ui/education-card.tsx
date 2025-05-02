@@ -21,7 +21,7 @@ export default function EducationCard() {
     {
       name: "Microsoft Certified: Azure Developer Associate",
       issuer: "Microsoft",
-      year: "Ongoing - Expected August 2025",
+      year: "Expected August 2025",
     },
     {
       name: "ICDL Profile — Document, Spreadsheets, Teamwork",

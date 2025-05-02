@@ -1,4 +1,5 @@
 "use client"
+
 import {
   ChevronLeft,
   ChevronRight,
@@ -27,7 +28,7 @@ import {
   Shovel,
   Wind,
 } from "lucide-react"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, type TouchEvent } from "react"
 import { cn } from "@/lib/utils"
 import type { JSX } from "react"
 
@@ -61,7 +62,7 @@ const techCategories: TechCategory[] = [
     icon: <Server className="h-5 w-5" />,
     technologies: [
       { name: ".NET MVC", icon: <Globe className="h-10 w-10 text-purple-600" />, years: 1 },
-      { name: "ASP.NET Web API", icon: <Server className="h-10 w-10 text-blue-600" />, years: 1 },
+      { name: ".NET Web API", icon: <Server className="h-10 w-10 text-blue-600" />, years: 1 },
       { name: "RESTful APIs", icon: <Workflow className="h-10 w-10 text-green-500" />, years: 4 },
       { name: "Django", icon: <LayoutGrid className="h-10 w-10 text-green-600" />, years: 1 },
       { name: "FastAPI", icon: <Cpu className="h-10 w-10 text-teal-500" />, years: 1 },
@@ -117,39 +118,83 @@ export default function TechStackGallery() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [userScrolling, setUserScrolling] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null)
   const userScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const categoryTabsRef = useRef<HTMLDivElement>(null)
 
+
+  const touchStartRef = useRef<number | null>(null)
+  const touchEndRef = useRef<number | null>(null)
+
   const activeCategory = techCategories[activeIndex]
 
-  const hasEnoughToScroll = activeCategory.technologies.length > 3
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
 
+    checkIfMobile()
+    window.addEventListener("resize", checkIfMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile)
+    }
+  }, [])
+
+
+  const hasEnoughToScroll = !isMobile ? activeCategory.technologies.length > 3 : activeCategory.technologies.length > 2
 
   const scroll = (direction: "left" | "right") => {
-    if (!scrollContainerRef.current || !hasEnoughToScroll) return
-
+    if (!scrollContainerRef.current) return
 
     setUserScrolling(true)
-
 
     if (userScrollTimeoutRef.current) {
       clearTimeout(userScrollTimeoutRef.current)
     }
 
-  
     userScrollTimeoutRef.current = setTimeout(() => {
       setUserScrolling(false)
-    }, 2000) 
+    }, 2000)
 
     const container = scrollContainerRef.current
-    const scrollAmount = direction === "left" ? -240 : 240 
+    const scrollAmount = direction === "left" ? -240 : 240
 
     container.scrollBy({
       left: scrollAmount,
       behavior: "smooth",
     })
+  }
+
+
+  const handleTouchStart = (e: TouchEvent) => {
+    if (!hasEnoughToScroll) return
+
+    touchStartRef.current = e.touches[0].clientX
+    setIsPaused(true)
+    setUserScrolling(true)
+  }
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!touchStartRef.current || !scrollContainerRef.current || !hasEnoughToScroll) return
+
+    const touchDelta = touchStartRef.current - e.touches[0].clientX
+    scrollContainerRef.current.scrollLeft += touchDelta / 1.5
+    touchStartRef.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (!hasEnoughToScroll) return
+
+    touchStartRef.current = null
+
+
+    setTimeout(() => {
+      setIsPaused(false)
+      setUserScrolling(false)
+    }, 2000)
   }
 
 
@@ -160,26 +205,23 @@ export default function TechStackGallery() {
     const autoScroll = () => {
       if (isPaused || userScrolling) return
 
-     
       const currentScroll = container.scrollLeft
       const maxScroll = container.scrollWidth - container.clientWidth
-
 
       if (currentScroll >= maxScroll - 10) {
         container.scrollLeft = 0
       } else {
         container.scrollBy({
-          left: 1, 
+          left: 1,
           behavior: "auto",
         })
       }
     }
 
-
-    const scrollInterval = setInterval(autoScroll, 20) 
+    const scrollInterval = setInterval(autoScroll, 20)
     autoScrollRef.current = scrollInterval
 
-    // Cleanup
+
     return () => {
       if (autoScrollRef.current) {
         clearInterval(autoScrollRef.current)
@@ -206,7 +248,6 @@ export default function TechStackGallery() {
         const tabLeft = activeTab.offsetLeft
         const tabWidth = activeTab.offsetWidth
 
- 
         const scrollLeft = tabLeft - containerWidth / 2 + tabWidth / 2
 
         tabsContainer.scrollTo({
@@ -218,14 +259,31 @@ export default function TechStackGallery() {
   }, [activeIndex])
 
 
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
 
-  const displayTechnologies = hasEnoughToScroll
-    ? [...activeCategory.technologies, ...activeCategory.technologies]
-    : activeCategory.technologies
+    const checkScroll = () => {
+      const hasHorizontalScroll = container.scrollWidth > container.clientWidth
+      container.classList.toggle("has-scroll", hasHorizontalScroll && hasEnoughToScroll)
+    }
+
+    checkScroll()
+    window.addEventListener("resize", checkScroll)
+
+    return () => {
+      window.removeEventListener("resize", checkScroll)
+    }
+  }, [activeIndex, hasEnoughToScroll])
+
+
+  const displayTechnologies =
+    hasEnoughToScroll && !isMobile
+      ? [...activeCategory.technologies, ...activeCategory.technologies]
+      : activeCategory.technologies
 
   return (
     <div className="w-full overflow-hidden">
-
       <div className="relative mb-12">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:block">
           <button
@@ -281,18 +339,26 @@ export default function TechStackGallery() {
         </p>
       </div>
 
-      {/* Gallery Container */}
+    
       <div
         className="relative mx-auto max-w-full"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Navigation Buttons - Only show if enough items to scroll */}
+   
         {hasEnoughToScroll && (
+          <>
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+          </>
+        )}
+
+  
+        {hasEnoughToScroll && !isMobile && (
           <>
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm text-foreground p-2 rounded-r-lg shadow-md hover:bg-background transition-all"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm text-foreground p-2 rounded-r-lg shadow-md hover:bg-background transition-all"
               aria-label="Scroll left"
             >
               <ChevronLeft className="h-6 w-6 cursor-pointer" />
@@ -300,7 +366,7 @@ export default function TechStackGallery() {
 
             <button
               onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm text-foreground p-2 rounded-l-lg shadow-md hover:bg-background transition-all"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm text-foreground p-2 rounded-l-lg shadow-md hover:bg-background transition-all"
               aria-label="Scroll right"
             >
               <ChevronRight className="h-6 w-6 cursor-pointer" />
@@ -308,14 +374,28 @@ export default function TechStackGallery() {
           </>
         )}
 
-        {/* Scrollable Container with Auto-Scroll */}
+        
+        {isMobile && activeCategory.technologies.length > 2 && (
+          <div className="md:hidden text-center text-xs text-muted-foreground mb-2 animate-pulse">
+            <span>← Swipe to see more →</span>
+          </div>
+        )}
+
+   
         <div
           ref={scrollContainerRef}
           className={cn(
-            "flex overflow-x-auto gap-6 pb-4 pt-2 px-12 no-scrollbar",
-            !hasEnoughToScroll && "justify-center",
+            "flex overflow-x-auto gap-6 pb-4 pt-2 px-12 scroll-smooth",
+            (!hasEnoughToScroll || (isMobile && activeCategory.technologies.length <= 2)) && "justify-center",
+            hasEnoughToScroll && "touch-pan-x", // Enable horizontal touch panning only when needed
           )}
-          style={{ scrollbarWidth: "none" }}
+          style={{
+            scrollbarWidth: "none",
+            WebkitOverflowScrolling: "touch", // Smooth scrolling on iOS
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {displayTechnologies.map((tech, index) => (
             <div

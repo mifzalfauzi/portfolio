@@ -189,7 +189,7 @@ export default function Page() {
                                             <li>Tailwind CSS for styling</li>
                                             <li>ShadCN/UI for components</li>
                                         </ul>
-                                        <p>It features SSR, responsive design, and dark mode support.</p>
+                                        <p>Features SSR, responsive design, and dark mode support.</p>
                                     </>
                                 }
                             />
@@ -197,7 +197,7 @@ export default function Page() {
                                 title="Personal Portfolio"
                                 description="Responsive personal portfolio developed with NextJS and Tailwind CSS"
                                 image="/portfolio.png?height=400&width=600"
-                                link=""
+                                link="https://github.com/mifzalfauzi/portfolio"
                                 demoLink="https://demo.example.com"
                                 tags={["Next.js", "Tailwind CSS"]}
                                 year="2025"
@@ -209,7 +209,7 @@ export default function Page() {
                                             <li>Tailwind CSS for styling</li>
                                             <li>ShadCN/UI for components</li>
                                         </ul>
-                                        <p>It features a responsive web design.</p>
+                                        <p>Features a responsive web design.</p>
                                     </>
                                 }
                             />

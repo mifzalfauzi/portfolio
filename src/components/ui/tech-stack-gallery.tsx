@@ -146,6 +146,9 @@ export default function TechStackGallery() {
   const hasEnoughToScroll = isMobile 
     ? activeCategory.technologies.length > 2 
     : activeCategory.technologies.length > 3
+    
+  // Check if we should auto-scroll on mobile
+  const shouldAutoScrollMobile = isMobile && activeCategory.technologies.length > 2
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollContainerRef.current || !hasEnoughToScroll) return
@@ -171,7 +174,8 @@ export default function TechStackGallery() {
 
   useEffect(() => {
     const container = scrollContainerRef.current
-    if (!container || !hasEnoughToScroll || isMobile) return
+    // Allow auto-scroll for mobile if there are more than 2 items
+    if (!container || !hasEnoughToScroll) return
 
     const autoScroll = () => {
       if (isPaused || userScrolling) return
@@ -198,7 +202,7 @@ export default function TechStackGallery() {
         clearInterval(autoScrollRef.current)
       }
     }
-  }, [isPaused, userScrolling, activeIndex, hasEnoughToScroll, isMobile])
+  }, [isPaused, userScrolling, activeIndex, hasEnoughToScroll])
 
   useEffect(() => {
     if (scrollContainerRef.current) {
@@ -227,8 +231,8 @@ export default function TechStackGallery() {
     }
   }, [activeIndex])
 
-  // Only duplicate items for desktop infinite scroll
-  const displayTechnologies = (!isMobile && hasEnoughToScroll)
+  // Duplicate items for infinite scroll when auto-scrolling is enabled
+  const displayTechnologies = hasEnoughToScroll
     ? [...activeCategory.technologies, ...activeCategory.technologies]
     : activeCategory.technologies
 

@@ -14,7 +14,7 @@ import SoftSkillsLanguages from "@/components/ui/soft-skills-languages"
 import TechStackGallery from "@/components/ui/tech-stack-gallery"
 import WorkExperience from "@/components/ui/work-experience"
 import TypewriterComponent from "@/components/ui/use-typewriter"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { ResumeModal } from "@/components/ui/resume-modal"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
@@ -22,20 +22,35 @@ export default function Page() {
 
     const [showModal, setShowModal] = useState(false);
 
-    const handlePreview = () => {
-        window.open('/resume-v2.pdf', '_blank');
-        setShowModal(false);
-    };
-
-    const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = '/resume-v2.pdf';
-        link.download = 'resume-v2.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setShowModal(false);
-    };
+    const handlePreview = useCallback(() => {
+        window.open("/resume-v2.pdf", "_blank")
+     
+        requestAnimationFrame(() => {
+          setShowModal(false)
+        })
+      }, [])
+    
+      const handleDownload = useCallback(() => {
+        const link = document.createElement("a")
+        link.href = "/resume-v2.pdf"
+        link.download = "resume-v2.pdf"
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+  
+        requestAnimationFrame(() => {
+          setShowModal(false)
+        })
+      }, [])
+    
+      const handleOpenModal = useCallback(() => {
+        setShowModal(true)
+      }, [])
+    
+      const handleCloseModal = useCallback(() => {
+        setShowModal(false)
+      }, [])
+    
 
 
     return (
@@ -403,11 +418,11 @@ export default function Page() {
             </footer>
 
             <ResumeModal
-                isOpen={showModal}
-                onClose={() => setShowModal(false)}
-                onPreview={handlePreview}
-                onDownload={handleDownload}
-            />
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        onPreview={handlePreview}
+        onDownload={handleDownload}
+      />
         </div>
     )
 }

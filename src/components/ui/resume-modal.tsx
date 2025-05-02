@@ -13,32 +13,31 @@ interface ResumeModalProps {
 
 export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeModalProps) {
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
-  // Handle escape key press to close modal
+  // Only run client-side
   useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) {
-        onClose()
-      }
-    }
-
-    window.addEventListener("keydown", handleEscKey)
-    return () => window.removeEventListener("keydown", handleEscKey)
-  }, [isOpen, onClose])
+    setIsMounted(true)
+    return () => setIsMounted(false)
+  }, [])
 
   // Handle animation states
   useEffect(() => {
     if (isOpen) {
       setIsAnimating(true)
+    } else {
+      // Add a small delay before stopping animation
+      const timer = setTimeout(() => {
+        setIsAnimating(false)
+      }, 300) // Match this with your transition duration
+      return () => clearTimeout(timer)
     }
   }, [isOpen])
 
-  const handleAnimationEnd = () => {
-    if (!isOpen) {
-      setIsAnimating(false)
-    }
-  }
+  // Don't render anything on server or if not mounted
+  if (!isMounted) return null
 
+  // Don't render if not open and not animating
   if (!isOpen && !isAnimating) return null
 
   return (
@@ -47,8 +46,10 @@ export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeMo
         "fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-300",
         isOpen ? "opacity-100" : "opacity-0",
       )}
-      onClick={onClose}
-      onAnimationEnd={handleAnimationEnd}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClose()
+      }}
     >
       <div
         className={cn(
@@ -60,7 +61,10 @@ export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeMo
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Resume Options</h2>
           <button
-            onClick={onClose}
+            onClick={(e) => {
+              e.stopPropagation()
+              onClose()
+            }}
             className="rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-700"
             aria-label="Close"
           >
@@ -76,7 +80,10 @@ export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeMo
 
           <div className="grid grid-cols-2 gap-4">
             <button
-              onClick={onPreview}
+              onClick={(e) => {
+                e.stopPropagation()
+                onPreview()
+              }}
               className="group flex flex-col items-center justify-center rounded-lg border border-gray-200 p-4 transition-all hover:border-transparent hover:bg-blue-50 hover:shadow-md dark:border-gray-700 dark:hover:bg-blue-900/20"
             >
               <div className="mb-2 rounded-full bg-blue-100 p-2 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-900/30 dark:text-blue-400 dark:group-hover:bg-blue-600 dark:group-hover:text-white">
@@ -87,7 +94,10 @@ export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeMo
             </button>
 
             <button
-              onClick={onDownload}
+              onClick={(e) => {
+                e.stopPropagation()
+                onDownload()
+              }}
               className="group flex flex-col items-center justify-center rounded-lg border border-gray-200 p-4 transition-all hover:border-transparent hover:bg-green-50 hover:shadow-md dark:border-gray-700 dark:hover:bg-green-900/20"
             >
               <div className="mb-2 rounded-full bg-green-100 p-2 text-green-600 transition-colors group-hover:bg-green-600 group-hover:text-white dark:bg-green-900/30 dark:text-green-400 dark:group-hover:bg-green-600 dark:group-hover:text-white">
@@ -101,7 +111,10 @@ export function ResumeModal({ isOpen, onClose, onPreview, onDownload }: ResumeMo
 
         <div className="flex justify-end border-t border-gray-100 px-6 py-4 dark:border-gray-700">
           <button
-            onClick={onClose}
+            onClick={(e) => {
+              e.stopPropagation()
+              onClose()
+            }}
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
           >
             Cancel

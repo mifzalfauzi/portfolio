@@ -55,44 +55,54 @@ export default function Page() {
 
     return (
         <div className="min-h-screen bg-background">
-            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
-                    <div className="mr-4 hidden md:flex">
-                        <Link className="mr-6 flex items-center space-x-2" href="/">
-                            <span className="hidden font-bold sm:inline-block">Mifzal Fauzi</span>
-                        </Link>
-                        <nav className="flex items-center space-x-6 text-sm font-medium">
-                            <Link href="#about" className="transition-colors hover:text-foreground/80">
-                                About
-                            </Link>
-                            <Link href="#experience" className="transition-colors hover:text-foreground/80">
-                                Experience
-                            </Link>
-                            <Link href="#education" className="transition-colors hover:text-foreground/80">
-                                Education
-                            </Link>
-                            <Link href="#education" className="transition-colors hover:text-foreground/80">
-                                Achievements
-                            </Link>
-                            <Link href="#projects" className="transition-colors hover:text-foreground/80">
-                                Projects
-                            </Link>
-                            <Link href="#tech-stack-gallery" className="transition-colors hover:text-foreground/80">
-                                Tech
-                            </Link>
-                            <Link href="#soft-skills" className="transition-colors hover:text-foreground/80">
-                                Skills
-                            </Link>
-                        </nav>
-                    </div>
-                    <div className="ml-auto flex items-center gap-4">
-                        <ThemeToggle />
-                        <Button variant="outline" className="cursor-pointer" onClick={() => setShowModal(true)}>
-                            Detailed Resume
-                        </Button>
-                    </div>
-                </div>
-            </header>
+            
+<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
+        {/* ThemeToggle moved to left side for mobile */}
+        <div className="md:hidden mr-auto">
+            <ThemeToggle />
+        </div>
+        
+        <div className="mr-4 hidden md:flex">
+            <Link className="mr-6 flex items-center space-x-2" href="/">
+                <span className="hidden font-bold sm:inline-block">Mifzal Fauzi</span>
+            </Link>
+            <nav className="flex items-center space-x-6 text-sm font-medium">
+                <Link href="#about" className="transition-colors hover:text-foreground/80">
+                    About
+                </Link>
+                <Link href="#experience" className="transition-colors hover:text-foreground/80">
+                    Experience
+                </Link>
+                <Link href="#education" className="transition-colors hover:text-foreground/80">
+                    Education
+                </Link>
+                <Link href="#education" className="transition-colors hover:text-foreground/80">
+                    Achievements
+                </Link>
+                <Link href="#projects" className="transition-colors hover:text-foreground/80">
+                    Projects
+                </Link>
+                <Link href="#tech-stack-gallery" className="transition-colors hover:text-foreground/80">
+                    Tech
+                </Link>
+                <Link href="#soft-skills" className="transition-colors hover:text-foreground/80">
+                    Skills
+                </Link>
+            </nav>
+        </div>
+        
+        <div className="ml-auto flex items-center gap-4">
+            {/* ThemeToggle only appears here on non-mobile screens */}
+            <div className="hidden md:block">
+                <ThemeToggle />
+            </div>
+            <Button variant="outline" className="cursor-pointer" onClick={() => setShowModal(true)}>
+                Detailed Resume
+            </Button>
+        </div>
+    </div>
+</header>
 
             <main className="w-full">
                 <section id="about" className="py-12 md:py-24 lg:py-32">

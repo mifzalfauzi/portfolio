@@ -24,85 +24,85 @@ export default function Page() {
 
     const handlePreview = useCallback(() => {
         window.open("/resume-v2.pdf", "_blank")
-     
+
         requestAnimationFrame(() => {
-          setShowModal(false)
+            setShowModal(false)
         })
-      }, [])
-    
-      const handleDownload = useCallback(() => {
+    }, [])
+
+    const handleDownload = useCallback(() => {
         const link = document.createElement("a")
         link.href = "/resume-v2.pdf"
         link.download = "resume-v2.pdf"
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
-  
+
         requestAnimationFrame(() => {
-          setShowModal(false)
+            setShowModal(false)
         })
-      }, [])
-    
-      const handleOpenModal = useCallback(() => {
+    }, [])
+
+    const handleOpenModal = useCallback(() => {
         setShowModal(true)
-      }, [])
-    
-      const handleCloseModal = useCallback(() => {
+    }, [])
+
+    const handleCloseModal = useCallback(() => {
         setShowModal(false)
-      }, [])
-    
+    }, [])
+
 
 
     return (
         <div className="min-h-screen bg-background">
-            
-<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
-        {/* ThemeToggle moved to left side for mobile */}
-        <div className="md:hidden mr-auto">
-            <ThemeToggle />
-        </div>
-        
-        <div className="mr-4 hidden md:flex">
-            <Link className="mr-6 flex items-center space-x-2" href="/">
-                <span className="hidden font-bold sm:inline-block">Mifzal Fauzi</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-                <Link href="#about" className="transition-colors hover:text-foreground/80">
-                    About
-                </Link>
-                <Link href="#experience" className="transition-colors hover:text-foreground/80">
-                    Experience
-                </Link>
-                <Link href="#education" className="transition-colors hover:text-foreground/80">
-                    Education
-                </Link>
-                <Link href="#education" className="transition-colors hover:text-foreground/80">
-                    Achievements
-                </Link>
-                <Link href="#projects" className="transition-colors hover:text-foreground/80">
-                    Projects
-                </Link>
-                <Link href="#tech-stack-gallery" className="transition-colors hover:text-foreground/80">
-                    Tech
-                </Link>
-                <Link href="#soft-skills" className="transition-colors hover:text-foreground/80">
-                    Skills
-                </Link>
-            </nav>
-        </div>
-        
-        <div className="ml-auto flex items-center gap-4">
-            {/* ThemeToggle only appears here on non-mobile screens */}
-            <div className="hidden md:block">
-                <ThemeToggle />
-            </div>
-            <Button variant="outline" className="cursor-pointer" onClick={() => setShowModal(true)}>
-                Detailed Resume
-            </Button>
-        </div>
-    </div>
-</header>
+
+            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
+                
+                    <div className="md:hidden mr-auto">
+                        <ThemeToggle />
+                    </div>
+
+                    <div className="mr-4 hidden md:flex">
+                        <Link className="mr-6 flex items-center space-x-2" href="/">
+                            <span className="hidden font-bold sm:inline-block">Mifzal Fauzi</span>
+                        </Link>
+                        <nav className="flex items-center space-x-6 text-sm font-medium">
+                            <Link href="#about" className="transition-colors hover:text-foreground/80">
+                                About
+                            </Link>
+                            <Link href="#experience" className="transition-colors hover:text-foreground/80">
+                                Experience
+                            </Link>
+                            <Link href="#education" className="transition-colors hover:text-foreground/80">
+                                Education
+                            </Link>
+                            <Link href="#education" className="transition-colors hover:text-foreground/80">
+                                Achievements
+                            </Link>
+                            <Link href="#projects" className="transition-colors hover:text-foreground/80">
+                                Projects
+                            </Link>
+                            <Link href="#tech-stack-gallery" className="transition-colors hover:text-foreground/80">
+                                Tech
+                            </Link>
+                            <Link href="#soft-skills" className="transition-colors hover:text-foreground/80">
+                                Skills
+                            </Link>
+                        </nav>
+                    </div>
+
+                    <div className="ml-auto flex items-center gap-4">
+                        {/* ThemeToggle only appears here on non-mobile screens */}
+                        <div className="hidden md:block">
+                            <ThemeToggle />
+                        </div>
+                        <Button variant="outline" className="cursor-pointer" onClick={() => setShowModal(true)}>
+                            Detailed Resume
+                        </Button>
+                    </div>
+                </div>
+            </header>
 
             <main className="w-full">
                 <section id="about" className="py-12 md:py-24 lg:py-32">
@@ -128,7 +128,7 @@ export default function Page() {
                                     Building digital experiences with modern technologies. Focused on creating elegant solutions to complex problems.
                                 </p>
 
-                                <div className="flex flex-wrap gap-4">
+                                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                                     <Link href="https://github.com/mifzalfauzi" target="_blank">
                                         <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                                             <Github className="h-4 w-4" />
@@ -221,7 +221,7 @@ export default function Page() {
                             />
                             <ProjectCard
                                 title="Personal Portfolio"
-                                description="Responsive personal portfolio developed with NextJS and Tailwind CSS"
+                                description="Responsive personal portfolio developed with Next.js and Tailwind CSS"
                                 image="/portfolio.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
                                 demoLink="https://mifzal-dev.vercel.app"
@@ -241,7 +241,7 @@ export default function Page() {
                             />
                             <ProjectCard
                                 title="Music Academy Management System with Chatbot Integration"
-                                description="A management system for music academies to fulfill final-year project requirements."
+                                description="Music academy management system for student registration, attendance, and progress tracking, built as a final-year project."
                                 image="/login.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/fyp-MAMS"
                                 // demoLink="https://demo.example.com"
@@ -254,7 +254,7 @@ export default function Page() {
                                             <li>Developed using Python (Django) for server-side development using MVT (Model-View-Template) architecture</li>
                                             <li>Constructed an NLP Voting Classifier Pipeline (Google Colab) utilizing machine learning algorithms and NLTK trained on 1500+ sample datasets for context-based assistant responses in Text Classification</li>
                                             <li>Enhanced chatbot responses functionality by API integration with OpenAI</li>
-                                           
+
                                         </ul>
                                         <p>Associated with the National University of Malaysia</p>
                                     </>
@@ -263,7 +263,7 @@ export default function Page() {
                             />
                             <ProjectCard
                                 title="Student Absenteeism Management System "
-                                description="An AI-powered chat interface with natural language processing capabilities."
+                                description="Management system for recording university students' class attendance, designed for lecturers' reference."
                                 image="/sams.jpg?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/SAMS"
 
@@ -426,11 +426,11 @@ export default function Page() {
             </footer>
 
             <ResumeModal
-        isOpen={showModal}
-        onClose={handleCloseModal}
-        onPreview={handlePreview}
-        onDownload={handleDownload}
-      />
+                isOpen={showModal}
+                onClose={handleCloseModal}
+                onPreview={handlePreview}
+                onDownload={handleDownload}
+            />
         </div>
     )
 }

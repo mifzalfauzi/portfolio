@@ -126,28 +126,28 @@ export default function TechStackGallery() {
 
   const activeCategory = techCategories[activeIndex]
 
-  // Check if viewport is mobile and update state
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768)
     }
-    
-    // Initial check
+
+
     checkScreenSize()
-    
-    // Add event listener
+
+
     window.addEventListener('resize', checkScreenSize)
-    
-    // Cleanup
+
+
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
 
-  // Determine if scrolling is needed based on screen size and number of items
-  const hasEnoughToScroll = isMobile 
-    ? activeCategory.technologies.length > 2 
+
+  const hasEnoughToScroll = isMobile
+    ? activeCategory.technologies.length > 2
     : activeCategory.technologies.length > 3
-    
-  // Check if we should auto-scroll on mobile
+
+
   const shouldAutoScrollMobile = isMobile && activeCategory.technologies.length > 2
 
   const scroll = (direction: "left" | "right") => {
@@ -158,13 +158,13 @@ export default function TechStackGallery() {
     if (userScrollTimeoutRef.current) {
       clearTimeout(userScrollTimeoutRef.current)
     }
-  
+
     userScrollTimeoutRef.current = setTimeout(() => {
       setUserScrolling(false)
-    }, 2000) 
+    }, 2000)
 
     const container = scrollContainerRef.current
-    const scrollAmount = direction === "left" ? -240 : 240 
+    const scrollAmount = direction === "left" ? -240 : 240
 
     container.scrollBy({
       left: scrollAmount,
@@ -174,12 +174,12 @@ export default function TechStackGallery() {
 
   useEffect(() => {
     const container = scrollContainerRef.current
-    // Allow auto-scroll for mobile if there are more than 2 items
+
     if (!container || !hasEnoughToScroll) return
 
     const autoScroll = () => {
       if (isPaused || userScrolling) return
-     
+
       const currentScroll = container.scrollLeft
       const maxScroll = container.scrollWidth - container.clientWidth
 
@@ -187,16 +187,16 @@ export default function TechStackGallery() {
         container.scrollLeft = 0
       } else {
         container.scrollBy({
-          left: 1, 
+          left: 1,
           behavior: "auto",
         })
       }
     }
 
-    const scrollInterval = setInterval(autoScroll, 20) 
+    const scrollInterval = setInterval(autoScroll, 20)
     autoScrollRef.current = scrollInterval
 
-    // Cleanup
+
     return () => {
       if (autoScrollRef.current) {
         clearInterval(autoScrollRef.current)
@@ -231,14 +231,21 @@ export default function TechStackGallery() {
     }
   }, [activeIndex])
 
-  // Duplicate items for infinite scroll when auto-scrolling is enabled
+
   const displayTechnologies = hasEnoughToScroll
     ? [...activeCategory.technologies, ...activeCategory.technologies]
     : activeCategory.technologies
 
   return (
     <div className="w-full overflow-hidden">
+
       <div className="relative mb-12">
+        {isMobile &&  (
+          <div className="text-center text-muted-foreground text-sm mb-4 flex items-center justify-center gap-2">
+            <MoveHorizontal className="h-4 w-4" />
+            <span>Swipe to see more</span>
+          </div>
+        )}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:block">
           <button
             onClick={() => setActiveIndex((prev) => (prev === 0 ? techCategories.length - 1 : prev - 1))}
@@ -259,27 +266,50 @@ export default function TechStackGallery() {
           </button>
         </div>
 
-        <div className="overflow-x-auto py-2 no-scrollbar px-4 md:px-16">
-          <div ref={categoryTabsRef} className="flex space-x-2 min-w-max justify-start md:justify-center">
-            {techCategories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer",
-                  activeIndex === index
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-muted hover:bg-muted/80 text-foreground",
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  {category.icon}
-                  <span>{category.name}</span>
-                </div>
-              </button>
-            ))}
-          </div>
+        <div
+  className="overflow-x-auto py-2 px-4 md:px-16"
+  style={
+    isMobile
+      ? {
+          scrollbarWidth: 'none', // Firefox
+          msOverflowStyle: 'none', // IE 10+
+          WebkitOverflowScrolling: 'touch',
+          overflowX: 'scroll',
+        }
+      : undefined
+  }
+  ref={(el) => {
+    if (isMobile && el) {
+      el.style.setProperty('scrollbar-width', 'none'); // Firefox
+      el.style.setProperty('-ms-overflow-style', 'none'); // IE
+      // Chrome/Safari scrollbar hiding can't be done inline, this is best-effort
+    }
+  }}
+>
+  <div
+    ref={categoryTabsRef}
+    className="flex space-x-2 min-w-max justify-start md:justify-center"
+  >
+    {techCategories.map((category, index) => (
+      <button
+        key={index}
+        onClick={() => setActiveIndex(index)}
+        className={cn(
+          "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer",
+          activeIndex === index
+            ? "bg-primary text-primary-foreground shadow-md"
+            : "bg-muted hover:bg-muted/80 text-foreground",
+        )}
+      >
+        <div className="flex items-center gap-2">
+          {category.icon}
+          <span>{category.name}</span>
         </div>
+      </button>
+    ))}
+  </div>
+</div>
+
       </div>
 
       <div className="text-center mb-6">
@@ -293,13 +323,13 @@ export default function TechStackGallery() {
         </p>
       </div>
 
-      {/* Gallery Container */}
+
       <div
         className="relative mx-auto max-w-full"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Navigation Buttons - Only show on desktop and if enough items to scroll */}
+
         {hasEnoughToScroll && !isMobile && (
           <>
             <button
@@ -320,7 +350,7 @@ export default function TechStackGallery() {
           </>
         )}
 
-        {/* Swipe indicator for mobile - only show when needed */}
+
         {isMobile && hasEnoughToScroll && (
           <div className="text-center text-muted-foreground text-sm mb-4 flex items-center justify-center gap-2">
             <MoveHorizontal className="h-4 w-4" />
@@ -328,14 +358,14 @@ export default function TechStackGallery() {
           </div>
         )}
 
-        {/* Scrollable Container with Auto-Scroll */}
+
         <div
           ref={scrollContainerRef}
           className={cn(
             "flex overflow-x-auto gap-4 md:gap-6 pb-4 pt-2 px-4 md:px-12 no-scrollbar",
-            // Center items on mobile when few items
+
             (isMobile && !hasEnoughToScroll) ? "justify-center" : "",
-            // Center items on desktop when few items
+
             (!isMobile && !hasEnoughToScroll) ? "justify-center" : "",
           )}
           style={{ scrollbarWidth: "none" }}
@@ -352,10 +382,10 @@ export default function TechStackGallery() {
                   <div className="transform transition-transform duration-300 group-hover:scale-110">{tech.icon}</div>
                 </div>
 
-                {/* Name */}
+
                 <h4 className="font-medium text-base text-center mb-2">{tech.name}</h4>
 
-                {/* Experience */}
+
                 <div className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full">
                   {tech.years} {tech.years === 1 ? "year" : "years"}
                 </div>
@@ -365,7 +395,7 @@ export default function TechStackGallery() {
         </div>
       </div>
 
-      {/* Pagination Dots */}
+
       <div className="flex justify-center mt-6 md:mt-8 space-x-2">
         {techCategories.map((_, index) => (
           <button

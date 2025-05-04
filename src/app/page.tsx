@@ -221,7 +221,7 @@ export default function Page() {
                             />
                             <ProjectCard
                                 title="Personal Portfolio"
-                                description="Responsive personal portfolio purely developed with Next.js"
+                                description="Responsive personal portfolio developed purely with Next.js"
                                 image="/portfolio.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
                                 demoLink="https://mifzal-dev.vercel.app"

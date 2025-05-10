@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trophy, Star, Zap, Users, NotebookIcon } from "lucide-react"
+import Image from "next/image"
 
 export default function AchievementsCard() {
   const achievements = [
@@ -7,7 +8,16 @@ export default function AchievementsCard() {
     {
       title: "Yayasan Telekom Malaysia Future Leaders Scholarship",
       description: "A full-ride scholarship provided by Yayasan TM to further study for a Bachelor's Degree in Software Engineering (Information System Development) by maintaining an academic promise with a CGPA of 3.00 and above",
-      icon: <Star className="h-8 w-8 text-yellow-500" />,
+      icon: (
+        <div className="relative w-12 h-10 rounded-full overflow-hidden">
+          <Image
+            src="/tm.jpg"
+            alt="Telekom Malaysia Logo"
+            fill
+            className="object-cover"
+          />
+        </div>
+      ),
       year: "2023 - 2025"
     },
     {
@@ -18,7 +28,7 @@ export default function AchievementsCard() {
     },
 
     {
-      title: "Dean's List Awards",
+      title: "Dean's List Award",
       description: "Five-time Dean's List Award recipient at the National University of Malaysia",
       icon: <NotebookIcon className="h-8 w-8 text-purple-500" />,
       year: "2021 - 2025"

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 // import { Typewriter } from "react-simple-typewriter"
-import { CodepenIcon, DatabaseIcon, GitGraphIcon, Github, HashIcon, Instagram, Linkedin, Mail, NetworkIcon, Twitter, XIcon } from "lucide-react"
+import { CodepenIcon, DatabaseIcon, GitGraphIcon, Github, HashIcon, Instagram, Linkedin, Mail, NetworkIcon, Twitter, XIcon, ChevronDown, Menu, X, GraduationCap, Trophy, Briefcase, Code2, Layers, Brain } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import ContactForm from "@/components/ui/contact-form"
@@ -17,10 +17,164 @@ import TypewriterComponent from "@/components/ui/use-typewriter"
 import { useCallback, useState } from "react"
 import { ResumeModal } from "@/components/ui/resume-modal"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { motion, useScroll, useTransform, useAnimationControls } from "framer-motion"
+
+const AnimatedSection = ({ children, id }: { children: React.ReactNode, id: string }) => {
+    return (
+        <motion.section
+            id={id}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="py-12 md:py-24 lg:py-32 min-h-screen flex items-center"
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="w-full"
+            >
+                {children}
+            </motion.div>
+        </motion.section>
+    )
+}
+
+const AnimatedHeading = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5 }}
+        >
+            {children}
+        </motion.div>
+    )
+}
+
+const FloatingScrollIcon = () => {
+    const { scrollYProgress } = useScroll();
+    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+
+    return (
+        <motion.div
+            style={{ opacity }}
+            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
+            initial={{ y: -20 }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }}
+        >
+            <ChevronDown className="w-8 h-8 text-primary animate-bounce" />
+        </motion.div>
+    );
+};
+
+const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const offset = window.innerHeight / 2 - element.offsetHeight / 2;
+            const targetPosition = element.offsetTop - offset;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            onClose();
+        }
+    };
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: "-100%" }}
+            animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : "-100%" }}
+            transition={{ duration: 0.3 }}
+            className={`fixed inset-y-0 left-0 w-64 bg-background border-r z-50 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        >
+            <div className="p-4">
+                <button onClick={onClose} className="absolute top-4 right-4">
+                    <X className="h-5 w-5" />
+                </button>
+                <nav className="mt-8 space-y-3">
+                    <button 
+                        onClick={() => scrollToSection('education')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <GraduationCap className="h-4 w-4 mr-3" />
+                        Education
+                    </button>
+                    <button 
+                        onClick={() => scrollToSection('education')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <Trophy className="h-4 w-4 mr-3" />
+                        Achievements
+                    </button>
+                    <button 
+                        onClick={() => scrollToSection('experience')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <Briefcase className="h-4 w-4 mr-3" />
+                        Experience
+                    </button>
+                    <button 
+                        onClick={() => scrollToSection('projects')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <Code2 className="h-4 w-4 mr-3" />
+                        Projects
+                    </button>
+                    <button 
+                        onClick={() => scrollToSection('tech-stack-gallery')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <Layers className="h-4 w-4 mr-3" />
+                        Tech
+                    </button>
+                    <button 
+                        onClick={() => scrollToSection('soft-skills')}
+                        className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
+                    >
+                        <Brain className="h-4 w-4 mr-3" />
+                        Skills
+                    </button>
+                </nav>
+            </div>
+        </motion.div>
+    );
+};
 
 export default function Page() {
 
     const [showModal, setShowModal] = useState(false);
+    const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+    const controls = useAnimationControls();
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const offset = window.innerHeight / 2 - element.offsetHeight / 2;
+            const targetPosition = element.offsetTop - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // Trigger animation
+            controls.start({
+                y: [20, 0],
+                opacity: [0, 1],
+                transition: { duration: 0.5 }
+            });
+        }
+    };
 
     const handlePreview = useCallback(() => {
         window.open("/resume-v2.pdf", "_blank")
@@ -59,36 +213,69 @@ export default function Page() {
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
                 
-                    <div className="md:hidden mr-auto">
+                    <div className="md:hidden flex items-center gap-4">
+                        <button 
+                            onClick={() => setIsMobileNavOpen(true)}
+                            className="p-2 hover:bg-muted rounded-md"
+                        >
+                            <Menu className="h-5 w-5" />
+                        </button>
                         <ThemeToggle />
                     </div>
 
-                    <div className="mr-4 hidden md:flex">
-                        <Link className="mr-6 flex items-center space-x-2" href="/">
-                            <span className="hidden font-bold sm:inline-block">Mifzal Fauzi</span>
-                        </Link>
-                        <nav className="flex items-center space-x-6 text-sm font-medium">
-                            <Link href="#about" className="transition-colors hover:text-foreground/80">
-                                About
-                            </Link>
-                            <Link href="#experience" className="transition-colors hover:text-foreground/80">
-                                Experience
-                            </Link>
-                            <Link href="#education" className="transition-colors hover:text-foreground/80">
+                    <div className="mr-4 hidden md:flex cursor-pointer">
+                  
+                        {/* <button 
+                                onClick={() => scrollToSection('about')}
+                                className="transition-colors hover:text-foreground/80"
+                            >
+                                Mifzal Fauzi
+                            </button>  */}
+                        
+                        <nav className="flex items-center space-x-6 text-sm font-medium cursor-pointer">
+                            <button 
+                                onClick={() => scrollToSection('about')}
+                                className="transition-colors hover:text-foreground/80 text-sm font-bold cursor-pointer"
+                            >
+                                Mifzal Fauzi
+                            </button>
+                           
+                            <button 
+                                onClick={() => scrollToSection('education')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
                                 Education
-                            </Link>
-                            <Link href="#education" className="transition-colors hover:text-foreground/80">
+                            </button>
+                            <button 
+                                onClick={() => scrollToSection('education')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
                                 Achievements
-                            </Link>
-                            <Link href="#projects" className="transition-colors hover:text-foreground/80">
+                            </button>
+                            <button 
+                                onClick={() => scrollToSection('experience')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
+                                Experience
+                            </button>
+                            <button 
+                                onClick={() => scrollToSection('projects')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
                                 Projects
-                            </Link>
-                            <Link href="#tech-stack-gallery" className="transition-colors hover:text-foreground/80">
+                            </button>
+                            <button 
+                                onClick={() => scrollToSection('tech-stack-gallery')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
                                 Tech
-                            </Link>
-                            <Link href="#soft-skills" className="transition-colors hover:text-foreground/80">
+                            </button>
+                            <button 
+                                onClick={() => scrollToSection('soft-skills')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
                                 Skills
-                            </Link>
+                            </button>
                         </nav>
                     </div>
 
@@ -105,30 +292,39 @@ export default function Page() {
             </header>
 
             <main className="w-full">
-                <section id="about" className="py-12 md:py-24 lg:py-32">
+                <FloatingScrollIcon />
+                <AnimatedSection id="about">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex-1 space-y-4">
-                                <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi</h2>
-
-                                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                                    {/* <span className="mr-2"></span> */}
-                                    <span className="text-primary">
-                                        <TypewriterComponent
-                                            words={["Entry-Level Web Developer", "Entry-Level Systems Developer", "Aspiring Software Engineer"]}
-                                            typeSpeed={70}
-                                            deleteSpeed={50}
-                                            delayBetweenWords={1000}
-                                            loop={true}
-                                        />
-                                    </span>
-                                </h1>
-
-                                <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                                    Building digital experiences with modern technologies. Focused on creating elegant solutions to complex problems.
-                                </p>
-
-                                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                                <AnimatedHeading>
+                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi</h2>
+                                </AnimatedHeading>
+                                <AnimatedHeading>
+                                    <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                                        <span className="text-primary">
+                                            <TypewriterComponent
+                                                words={["Entry-Level Web Developer", "Entry-Level Systems Developer", "Aspiring Software Engineer"]}
+                                                typeSpeed={70}
+                                                deleteSpeed={50}
+                                                delayBetweenWords={1000}
+                                                loop={true}
+                                            />
+                                        </span>
+                                    </h1>
+                                </AnimatedHeading>
+                                <AnimatedHeading>
+                                    <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                                        Building digital experiences with modern technologies. Focused on creating elegant solutions to complex problems.
+                                    </p>
+                                </AnimatedHeading>
+                                <motion.div 
+                                    className="flex flex-wrap gap-4 justify-center md:justify-start"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false }}
+                                    transition={{ duration: 0.5, delay: 0.3 }}
+                                >
                                     <Link href="https://github.com/mifzalfauzi" target="_blank">
                                         <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                                             <Github className="h-4 w-4" />
@@ -153,9 +349,15 @@ export default function Page() {
                                             <span className="sr-only">Email</span>
                                         </Button>
                                     </Link>
-                                </div>
+                                </motion.div>
                             </div>
-                            <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-primary/20 shadow-xl">
+                            <motion.div 
+                                className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-primary/20 shadow-xl"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: false }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                            >
                                 <Image
                                     src="/mifzal.jpg?height=400&width=400"
                                     alt="Profile Photo"
@@ -163,39 +365,66 @@ export default function Page() {
                                     className="object-cover"
                                     priority
                                 />
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
-                </section>
+                </AnimatedSection>
 
 
-                <section id="education" className="py-12 md:py-24 lg:py-32">
+                <AnimatedSection id="education">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                            Education & Achievements
-                        </h2>
-                        <div className="grid gap-8 md:grid-cols-2">
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+                                Education & Achievements
+                            </h2>
+                        </AnimatedHeading>
+                        <motion.div 
+                            className="grid gap-8 md:grid-cols-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
                             <EducationCard />
                             <AchievementsCard />
-                        </div>
+                        </motion.div>
                     </div>
-                </section>
-                <section id="experience" className="py-12 md:py-24 lg:py-32">
+                </AnimatedSection>
+                <AnimatedSection id="experience">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                            Working Experience
-                        </h2>
-                        <WorkExperience />
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+                                Working Experience
+                            </h2>
+                        </AnimatedHeading>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <WorkExperience />
+                        </motion.div>
                     </div>
-                </section>
+                </AnimatedSection>
 
-                <section id="projects" className="py-12 md:py-24 lg:py-32 ">
+                <AnimatedSection id="projects">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">Projects</h2>
-                        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-                            Selection of recent work and personal projects that showcases skills and expertise.
-                        </p>
-                        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">Projects</h2>
+                        </AnimatedHeading>
+                        <AnimatedHeading>
+                            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+                                Selection of recent work and personal projects that showcases skills and expertise.
+                            </p>
+                        </AnimatedHeading>
+                        <motion.div 
+                            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
                             <ProjectCard
                                 title="A.I.-Powered Prompt Citation for Students (Ongoing)"
                                 description=" A.I. citation platform for students built with Next.js, FastAPI, with Axios and NeonDB integration."
@@ -284,21 +513,32 @@ export default function Page() {
                                 }
                                 images={["group.jpg", "sams.jpg"]}
                             />
-                        </div>
+                        </motion.div>
                     </div>
-                </section>
+                </AnimatedSection>
 
-                <section id="tech-stack-gallery" className="py-12 md:py-24 lg:py-32">
+                <AnimatedSection id="tech-stack-gallery">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
-                            Technology Expertise
-                        </h2>
-                        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-                            Technical skills across different tech categories, based on years of experience.
-                        </p>
-                        <TechStackGallery />
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
+                                Technology Expertise
+                            </h2>
+                        </AnimatedHeading>
+                        <AnimatedHeading>
+                            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+                                Technical skills across different tech categories, based on years of experience.
+                            </p>
+                        </AnimatedHeading>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <TechStackGallery />
+                        </motion.div>
                     </div>
-                </section>
+                </AnimatedSection>
 
                 {/* <section id="skills" className="py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -356,17 +596,28 @@ export default function Page() {
                 {/* </div>
         </section> */}
 
-                <section id="soft-skills" className="py-12 md:py-24 lg:py-32">
+                <AnimatedSection id="soft-skills">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
-                            Soft Skills & Languages
-                        </h2>
-                        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-                            Beyond technical skills, qualities and languages enhance the work.
-                        </p>
-                        <SoftSkillsLanguages />
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
+                                Soft Skills & Languages
+                            </h2>
+                        </AnimatedHeading>
+                        <AnimatedHeading>
+                            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+                                Beyond technical skills, qualities and languages enhance the work.
+                            </p>
+                        </AnimatedHeading>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <SoftSkillsLanguages />
+                        </motion.div>
                     </div>
-                </section>
+                </AnimatedSection>
 
                 {/* <section id="contact" className="py-12 md:py-24 lg:py-32 relative">
           <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
@@ -393,27 +644,49 @@ export default function Page() {
                         <p className="text-sm text-muted-foreground">Entry-Level Web & Systems Developer</p>
                     </div>
                     <div className="flex flex-col gap-2 md:flex-row md:gap-4">
-                        <Link className="text-sm hover:text-primary transition-colors" href="#about">
+                        <button 
+                            onClick={() => scrollToSection('about')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             About
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#experience">
-                            Experience
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#education">
+                        </button>
+                       
+                        <button 
+                            onClick={() => scrollToSection('education')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             Education
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#education">
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('education')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             Achievements
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#projects">
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('experience')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
+                            Experience
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('projects')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             Projects
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#tech-stack-gallery">
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('tech-stack-gallery')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             Tech
-                        </Link>
-                        <Link className="text-sm hover:text-primary transition-colors" href="#soft-skills">
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('soft-skills')}
+                            className="text-sm hover:text-primary transition-colors"
+                        >
                             Skills
-                        </Link>
+                        </button>
 
                         {/* <Link className="text-sm hover:text-primary transition-colors" href="#contact">
                             Contact
@@ -430,6 +703,11 @@ export default function Page() {
                 onClose={handleCloseModal}
                 onPreview={handlePreview}
                 onDownload={handleDownload}
+            />
+
+            <MobileNav 
+                isOpen={isMobileNavOpen} 
+                onClose={() => setIsMobileNavOpen(false)} 
             />
         </div>
     )

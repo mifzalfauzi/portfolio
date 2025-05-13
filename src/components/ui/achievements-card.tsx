@@ -57,19 +57,16 @@ export default function AchievementsCard() {
                 {achievement.icon}
               </div>
               <div>
-      
-
                 <div>
                   <h3 className="font-medium">{achievement.title}</h3>
 
-                  <div className="grid grid-cols-[1fr_auto] items-end gap-2 text-sm text-muted-foreground">
-                    <p className="m-0">{achievement.description}</p>
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full whitespace-nowrap self-end">
+                  <div className="flex flex-col sm:flex-row sm:items-end gap-2 text-sm text-muted-foreground">
+                    <p className="m-0 flex-1">{achievement.description}</p>
+                    <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full whitespace-nowrap self-start sm:self-end">
                       {achievement.year}
                     </span>
                   </div>
                 </div>
-
               </div>
 
             </div>

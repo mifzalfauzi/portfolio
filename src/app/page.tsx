@@ -298,7 +298,7 @@ export default function Page() {
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex-1 space-y-4">
                                 <AnimatedHeading>
-                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi</h2>
+                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi | SWE | YTM Future Leaders Scholar</h2>
                                 </AnimatedHeading>
                                 <AnimatedHeading>
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">

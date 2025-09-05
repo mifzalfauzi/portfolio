@@ -58,7 +58,7 @@ const techCategories: TechCategory[] = [
       { name: "Razor Pages", icon: <FileType2 className="h-10 w-10 text-purple-500" />, years: 1 },
       { name: "Django Views", icon: <LayoutGrid className="h-10 w-10 text-green-600" />, years: 1 },
       { name: "NextJS", icon: <Layers className="h-10 w-10 text-gray-800 dark:text-gray-200" />, years: 1 },
-      { name: "Vue.js", icon: <PictureInPictureIcon className="h-10 w-10 text-red-800 dark:text-red-500" />, years: 1 },
+      { name: "VueJS", icon: <PictureInPictureIcon className="h-10 w-10 text-red-800 dark:text-red-500" />, years: 1 },
     ],
   },
   {
@@ -325,8 +325,9 @@ export default function TechStackGallery() {
           <span>{activeCategory.name}</span>
         </h3>
         <p className="text-muted-foreground mt-2">
-          {activeCategory.technologies.length} technologies •{" "}
-          {activeCategory.technologies.reduce((sum, tech) => sum + tech.years, 0)} years of combined experience
+          {activeCategory.technologies.length} technologies
+          {/* •{" "} */}
+          {/* {activeCategory.technologies.reduce((sum, tech) => sum + tech.years, 0)} years of combined experience */}
         </p>
       </div>
 

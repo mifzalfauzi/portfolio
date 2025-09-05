@@ -51,11 +51,11 @@ export default function EducationCard() {
       year: "2023",
       link: "https://openbadgefactory.com/v1/assertion/94367f6f526e32f87593f8a53f56b196fa158c45"
     },
-    {
-      name: "Classical Guitar Studies - Grade 6",
-      issuer: "Yamaha Corporation",
-      year: "2023",
-    },
+    // {
+    //   name: "Classical Guitar Studies - Grade 6",
+    //   issuer: "Yamaha Corporation",
+    //   year: "2023",
+    // },
   ]
 
   return (

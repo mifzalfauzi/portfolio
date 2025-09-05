@@ -298,7 +298,7 @@ export default function Page() {
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex-1 space-y-4">
                                 <AnimatedHeading>
-                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi | SWE | YTM Future Leaders Scholar</h2>
+                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi | SWE (Information Systems) | Yayasan TM Future Leaders Scholar</h2>
                                 </AnimatedHeading>
                                 <AnimatedHeading>
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
@@ -431,13 +431,13 @@ export default function Page() {
                                 image="/progress-work.png?height=400&width=600"
                                 demoLink="https://www.drop2chat.com/main"
                                 link=""
-                                tags={["Vue.js", "FastAPI", "Python", "Axios", "SQLAlchemy ORM", "Alembic"]}
+                                tags={["VueJS", "FastAPI", "Python", "Axios", "SQLAlchemy ORM", "Alembic"]}
                                 year="July 2025 - Ongoing"
                                 details={
                                     <>
                                         <p>Ongoing project using technologies such as:</p>
                                         <ul className="list-disc list-inside">
-                                            <li>Vue.js with App Router for a modular, component-based frontend</li>
+                                            <li>VueJS with App Router for a modular, component-based frontend</li>
                                             <li>FastAPI powering high-performance RESTful APIs and logic</li>
                                             <li>Axios for efficient API communication and data handling</li>
                                             <li>Tailwind CSS enabling clean, responsive, utility-first styling</li>

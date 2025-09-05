@@ -102,42 +102,42 @@ const MobileNav = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                     <X className="h-5 w-5" />
                 </button>
                 <nav className="mt-8 space-y-3">
-                    <button 
+                    <button
                         onClick={() => scrollToSection('education')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
                         <GraduationCap className="h-4 w-4 mr-3" />
                         Education
                     </button>
-                    <button 
+                    <button
                         onClick={() => scrollToSection('education')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
                         <Trophy className="h-4 w-4 mr-3" />
                         Achievements
                     </button>
-                    <button 
+                    <button
                         onClick={() => scrollToSection('experience')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
                         <Briefcase className="h-4 w-4 mr-3" />
                         Experience
                     </button>
-                    <button 
+                    <button
                         onClick={() => scrollToSection('projects')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
                         <Code2 className="h-4 w-4 mr-3" />
                         Projects
                     </button>
-                    <button 
+                    <button
                         onClick={() => scrollToSection('tech-stack-gallery')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
                         <Layers className="h-4 w-4 mr-3" />
                         Tech
                     </button>
-                    <button 
+                    <button
                         onClick={() => scrollToSection('soft-skills')}
                         className="flex items-center w-full text-left px-4 py-2 hover:bg-muted rounded-md transition-colors text-sm"
                     >
@@ -161,7 +161,7 @@ export default function Page() {
         if (element) {
             const offset = window.innerHeight / 2 - element.offsetHeight / 2;
             const targetPosition = element.offsetTop - offset;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
@@ -212,9 +212,9 @@ export default function Page() {
 
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex h-14 items-center">
-                
+
                     <div className="md:hidden flex items-center gap-4">
-                        <button 
+                        <button
                             onClick={() => setIsMobileNavOpen(true)}
                             className="p-2 hover:bg-muted rounded-md"
                         >
@@ -224,53 +224,53 @@ export default function Page() {
                     </div>
 
                     <div className="mr-4 hidden md:flex cursor-pointer">
-                  
+
                         {/* <button 
                                 onClick={() => scrollToSection('about')}
                                 className="transition-colors hover:text-foreground/80"
                             >
                                 Mifzal Fauzi
                             </button>  */}
-                        
+
                         <nav className="flex items-center space-x-6 text-sm font-medium cursor-pointer">
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('about')}
                                 className="transition-colors hover:text-foreground/80 text-sm font-bold cursor-pointer"
                             >
                                 Mifzal Fauzi
                             </button>
-                           
-                            <button 
+
+                            <button
                                 onClick={() => scrollToSection('education')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Education
                             </button>
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('education')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Achievements
                             </button>
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('experience')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Experience
                             </button>
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('projects')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Projects
                             </button>
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('tech-stack-gallery')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Tech
                             </button>
-                            <button 
+                            <button
                                 onClick={() => scrollToSection('soft-skills')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
@@ -318,7 +318,7 @@ export default function Page() {
                                         Building digital experiences with modern technologies. Focused on creating elegant solutions to complex problems.
                                     </p>
                                 </AnimatedHeading>
-                                <motion.div 
+                                <motion.div
                                     className="flex flex-wrap gap-4 justify-center md:justify-start"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -351,7 +351,7 @@ export default function Page() {
                                     </Link>
                                 </motion.div>
                             </div>
-                            <motion.div 
+                            <motion.div
                                 className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-primary/20 shadow-xl"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
@@ -378,7 +378,7 @@ export default function Page() {
                                 Education & Achievements
                             </h2>
                         </AnimatedHeading>
-                        <motion.div 
+                        <motion.div
                             className="grid gap-8 md:grid-cols-2"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -394,7 +394,7 @@ export default function Page() {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                         <AnimatedHeading>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                                Working Experience
+                                Experience
                             </h2>
                         </AnimatedHeading>
                         <motion.div
@@ -415,10 +415,10 @@ export default function Page() {
                         </AnimatedHeading>
                         <AnimatedHeading>
                             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-                                Selection of recent work and personal projects that showcases skills and expertise.
+                                Selection of recent projects that showcases skills and expertise.
                             </p>
                         </AnimatedHeading>
-                        <motion.div 
+                        <motion.div
                             className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -426,27 +426,49 @@ export default function Page() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <ProjectCard
-                                title="A.I.-Powered Prompt Citation for Students (Ongoing)"
-                                description=" A.I. citation platform for students built with Next.js, FastAPI, with Axios and NeonDB integration."
+                                title="A.I.–Powered Document Analyzer for Corporate Users (Ongoing)"
+                                description=" AI platform for corporate users delivering document insights, risk and SWOT analysis, and decision-impact assessment."
                                 image="/progress-work.png?height=400&width=600"
+                                demoLink="https://www.drop2chat.com/main"
                                 link=""
-                                // demoLink="https://demo.example.com"
-                                tags={["Next.js", "FastAPI", "Python", "Axios"]}
-                                year="2025 - Ongoing"
+                                tags={["Vue.js", "FastAPI", "Python", "Axios", "SQLAlchemy ORM", "Alembic"]}
+                                year="July 2025 - Ongoing"
                                 details={
                                     <>
                                         <p>Ongoing project using technologies such as:</p>
                                         <ul className="list-disc list-inside">
-                                            <li>Next.js 13 with App Router</li>
-                                            <li>FastAPI for RESTful API implementation and backend logic</li>
-                                            <li>Axios for RESTful API calls</li>
-                                            <li>Tailwind CSS for styling</li>
-                                            <li>ShadCN/UI for components</li>
+                                            <li>Vue.js with App Router for a modular, component-based frontend</li>
+                                            <li>FastAPI powering high-performance RESTful APIs and logic</li>
+                                            <li>Axios for efficient API communication and data handling</li>
+                                            <li>Tailwind CSS enabling clean, responsive, utility-first styling</li>
+                                            <li>ShadCN/UI providing accessible, customizable UI components</li>
                                         </ul>
-                                        <p>Features SSR, responsive design, and dark mode support.</p>
+                                        <p>Includes server-side rendering, fully responsive layout, and built-in dark mode.</p>
+
                                     </>
                                 }
                                 images={["prototype.png"]}
+                            />
+                            <ProjectCard
+                                title="QuickAid - Smart Campus Helpdesk Platform"
+                                description=" Smart campus helpdesk platform built on Microsoft Azure, enabling automated ticketing, request tracking, and actionable insights for students and staff."
+                                image="/quickaid_thumbnail.png?height=250&width=400"
+                                demoLink="https://quickaid-frontend-hgacdxcvenh7cwcp.southeastasia-01.azurewebsites.net/"
+                                link=""
+                                tags={["Microsoft Azure"]}
+                                year="July 2025 - August 2025"
+                                details={
+                                    <>
+
+                                        <ul className="list-disc pl-5">
+                                            <li>Hands-on Microsoft Azure Capstone Project under the KnowledgeCom MyMahir Programme</li>
+                                            <li>Configured Azure Active Directory (single tenant) to enable RBAC for project contributors</li>
+                                            <li>Initialized Azure Key Vault to store and retrieve API keys while integrating Azure Cosmos DB and SendGrid with Azure Functions</li>
+                                        </ul>
+
+                                    </>
+                                }
+                                images={["quickaid1.png", "az_kv.png", "az_func.png", "az_backend.png", "quickaid_thumbnail.png"]}
                             />
                             <ProjectCard
                                 title="Personal Portfolio"
@@ -478,8 +500,8 @@ export default function Page() {
                                 year="2024"
                                 details={
                                     <>
-                                        <p>Final-Year Project of 2024:</p>
-                                        <ul className="list-disc list-inside">
+                                        <p>Final-Year Project for the Bachelor's Degree:</p>
+                                        <ul className="list-disc pl-5">
                                             <li>Developed using Python (Django) for server-side development using MVT (Model-View-Template) architecture</li>
                                             <li>Constructed an NLP Voting Classifier Pipeline (Google Colab) utilizing machine learning algorithms and NLTK trained on 1500+ sample datasets for context-based assistant responses in Text Classification</li>
                                             <li>Enhanced chatbot responses functionality by API integration with OpenAI</li>
@@ -501,7 +523,7 @@ export default function Page() {
                                 details={
                                     <>
                                         <p>This project involved certain methodologies and development technologies such as:</p>
-                                        <ul className="list-disc list-inside">
+                                        <ul className="list-disc pl-5">
                                             <li>Elected as Scrum Master from a team of five members to monitor progress throughout development within a span of three semesters (TTTU3404)</li>
                                             <li>Identified stakeholders and use cases for clear and concise project direction</li>
                                             <li>Developed with HTML, CSS and JavaScript for client-side and PHP for server-side processes</li>
@@ -644,44 +666,44 @@ export default function Page() {
                         <p className="text-sm text-muted-foreground">Entry-Level Web & Systems Developer</p>
                     </div>
                     <div className="flex flex-col gap-2 md:flex-row md:gap-4">
-                        <button 
+                        <button
                             onClick={() => scrollToSection('about')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             About
                         </button>
-                       
-                        <button 
+
+                        <button
                             onClick={() => scrollToSection('education')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             Education
                         </button>
-                        <button 
+                        <button
                             onClick={() => scrollToSection('education')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             Achievements
                         </button>
-                        <button 
+                        <button
                             onClick={() => scrollToSection('experience')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             Experience
                         </button>
-                        <button 
+                        <button
                             onClick={() => scrollToSection('projects')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             Projects
                         </button>
-                        <button 
+                        <button
                             onClick={() => scrollToSection('tech-stack-gallery')}
                             className="text-sm hover:text-primary transition-colors"
                         >
                             Tech
                         </button>
-                        <button 
+                        <button
                             onClick={() => scrollToSection('soft-skills')}
                             className="text-sm hover:text-primary transition-colors"
                         >
@@ -705,9 +727,9 @@ export default function Page() {
                 onDownload={handleDownload}
             />
 
-            <MobileNav 
-                isOpen={isMobileNavOpen} 
-                onClose={() => setIsMobileNavOpen(false)} 
+            <MobileNav
+                isOpen={isMobileNavOpen}
+                onClose={() => setIsMobileNavOpen(false)}
             />
         </div>
     )

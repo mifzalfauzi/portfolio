@@ -14,6 +14,22 @@ interface WorkExperienceItem {
 export default function WorkExperience() {
   const experiences: WorkExperienceItem[] = [
     {
+      position: "Trainee - MyMahir Programme (Microsoft Azure Cloud Developer Associate Track)",
+      company: "Knowledgecom",
+      period: "May 2025 - Present",
+      location: "Kuala Lumpur, Malaysia",
+      description: [
+        "Attended structured weekend classes on Microsoft Azure Development, covering core services such as Blob Storage, Cosmos DB, Key Vault, RBAC, and Event Grid",
+
+        "Gained hands-on knowledge of Azure infrastructure and applied it in practical labs",
+
+        "Delivered a Capstone Project (QuickAid Student Helpdesk), developed using Microsoft Azure services to simulate a real-world enterprise solution",
+
+        "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
+      ],
+      skills: ["Microsoft Azure", "Azure Key Vault", "Azure Blob Storage", "Azure Cosmos DB", "Azure RBAC", "Azure Event Grid", "Azure App Service", "Azure Functions"]
+    },
+    {
       position: "Technical Developer Intern",
       company: "AGTIV Consulting Sdn. Bhd.",
       location: "Kuala Lumpur, Malaysia",
@@ -25,8 +41,9 @@ export default function WorkExperience() {
         "Migrated the client’s change request physical data and documents from the past 4+ years into a hosted SharePoint environment, significantly improving document accessibility, data management, and overall organizational efficiency",
         "Assisted the functional team in determining the client’s requirements for change request form workflow, ensuring alignment with business needs"
       ],
-      skills: [".NET MVC","API .NET MVC", "SQL Server", "Git", "REST APIs"],
+      skills: [".NET MVC", "API .NET MVC", "SQL Server", "Git", "REST APIs"],
     },
+    
     // {
     //   position: "Full Stack Developer",
     //   company: "Digital Solutions Ltd.",

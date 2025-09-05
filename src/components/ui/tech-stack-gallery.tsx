@@ -27,6 +27,9 @@ import {
   Shovel,
   Wind,
   MoveHorizontal,
+  Pilcrow,
+  Beaker,
+  PictureInPictureIcon,
 } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
@@ -55,6 +58,7 @@ const techCategories: TechCategory[] = [
       { name: "Razor Pages", icon: <FileType2 className="h-10 w-10 text-purple-500" />, years: 1 },
       { name: "Django Views", icon: <LayoutGrid className="h-10 w-10 text-green-600" />, years: 1 },
       { name: "NextJS", icon: <Layers className="h-10 w-10 text-gray-800 dark:text-gray-200" />, years: 1 },
+      { name: "Vue.js", icon: <PictureInPictureIcon className="h-10 w-10 text-red-800 dark:text-red-500" />, years: 1 },
     ],
   },
   {
@@ -74,15 +78,18 @@ const techCategories: TechCategory[] = [
     technologies: [
       { name: "Microsoft SQL Server", icon: <Database className="h-10 w-10 text-red-600" />, years: 1 },
       { name: "MySQL", icon: <Database className="h-10 w-10 text-blue-600" />, years: 3 },
+      { name: "PostgreSQL (Supabase)", icon: <Database className="h-10 w-10 text-green-600" />, years: 1 },
     ],
   },
   {
-    name: "Libaries",
+    name: "Libraries",
     icon: <Book className="h-5 w-5" />,
     technologies: [
       { name: "Bootstrap", icon: <Shovel className="h-10 w-10 text-blue-600" />, years: 3 },
       { name: "Tailwind", icon: <Wind className="h-10 w-10 text-blue-600" />, years: 3 },
-      { name: "Axios", icon: <Axis3D className="h-10 w-10 text-red-600" />, years: 1 },
+      { name: "Axios", icon: <Axis3D className="h-10 w-10 text-orange-600" />, years: 1 },
+      { name: "Alembic", icon: <Pilcrow className="h-10 w-10 text-yellow-600" />, years: 1 },
+      { name: "SQLAlchemy", icon: <Beaker className="h-10 w-10 text-green-600" />, years: 1 },
     ],
   },
   {

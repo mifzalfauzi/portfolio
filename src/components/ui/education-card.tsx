@@ -7,13 +7,13 @@ export default function EducationCard() {
       degree: "Bachelor of Software Engineering with Honours (Information System Development)",
       institution: "National University of Malaysia",
       year: "2021 - 2025",
-      description: "Applied Software Engineering methodologies, CGPA 3.72/4.0",
+      description: "CGPA : 3.74 (Distinction)",
     },
     {
       degree: "Foundation in Science",
       institution: "MARA University of Technology",
       year: "2020 - 2021",
-      description: "Graduated with honors, CGPA 3.89/4.0",
+      description: "CGPA : 3.89/4.0",
     },
   ]
 
@@ -21,7 +21,7 @@ export default function EducationCard() {
     {
       name: "Microsoft Certified: Azure Developer Associate",
       issuer: "Microsoft",
-      year: "Expected August 2025",
+      year: "Expected 2025",
     },
     {
       name: "ICDL Profile — Document, Spreadsheets, Teamwork",

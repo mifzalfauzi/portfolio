@@ -38,7 +38,7 @@ export function ProjectModal({ open, onClose, title, details, images = [] }: Pro
             <img
               src={images[current]}
               alt={`Slide ${current}`}
-              className="w-full h-80 object-cover rounded-md"
+              className="w-full h-60 object-cover rounded-md"
             />
             {/* Arrows */}
             <button

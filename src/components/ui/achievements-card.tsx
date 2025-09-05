@@ -21,18 +21,19 @@ export default function AchievementsCard() {
       year: "2023 - 2025"
     },
     {
+      title: "Dean's List Award",
+      description: "Five-time Dean's List Award recipient at the National University of Malaysia",
+      icon: <NotebookIcon className="h-8 w-8 text-purple-500" />,
+      year: "2022-2025"
+    },
+    {
       title: "Cyberhack & Ethics Special Interest Group (Protocol Committee & Learning Facilitator)",
       description: "Part of the Protocol Committee under the Cyberhack & Ethics Special Interest Group in the Faculty of Information Science & Technology for the Technorace School@UKM Programme",
       year: "2022",
       icon: <Users className="h-8 w-8 text-blue-500" />,
     },
 
-    {
-      title: "Dean's List Award",
-      description: "Five-time Dean's List Award recipient at the National University of Malaysia",
-      icon: <NotebookIcon className="h-8 w-8 text-purple-500" />,
-      year: "2021 - 2025"
-    },
+    
     
     // {
     //   title: "Published Author",

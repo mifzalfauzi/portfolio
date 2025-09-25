@@ -1,6 +1,6 @@
 "use client"
 
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -45,6 +45,9 @@ export function ImageLightbox({ images, isOpen, onClose, initialIndex = 0 }: Ima
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-screen h-screen max-w-none p-0 bg-black/95 border-none">
+        <DialogTitle className="sr-only">
+          Image {currentIndex + 1} of {images.length}
+        </DialogTitle>
         <div className="relative w-full h-full flex items-center justify-center">
           <Button
             variant="ghost"

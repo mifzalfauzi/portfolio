@@ -16,7 +16,7 @@ export default function WorkExperience() {
     {
       position: "Trainee - MyMahir Programme (Microsoft Azure Cloud Developer Associate Track)",
       company: "Knowledgecom",
-      period: "May 2025 - Present",
+      period: "May 2025 - Sep 2025",
       location: "Kuala Lumpur, Malaysia",
       description: [
         "Attended structured weekend classes on Microsoft Azure Development, covering core services such as Blob Storage, Cosmos DB, Key Vault, RBAC, and Event Grid",

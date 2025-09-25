@@ -426,28 +426,30 @@ export default function Page() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <ProjectCard
-                                title="A.I.–Powered Document Analyzer for Corporate Users (Ongoing)"
+                                title=" Document Analyzer and Chatbot for Corporate Users (Complete Prototype)"
                                 description=" AI platform for corporate users delivering document insights, risk and SWOT analysis, and decision-impact assessment."
-                                image="/progress-work.png?height=400&width=600"
+                                image="/main_drop2chat_page.png?height=400&width=600"
                                 demoLink="https://www.drop2chat.com/main"
                                 link=""
                                 tags={["VueJS", "FastAPI", "Python", "Axios", "SQLAlchemy ORM", "Alembic"]}
-                                year="July 2025 - Ongoing"
+                                year="June 2025 - August 2025"
                                 details={
                                     <>
-                                        <p>Ongoing project using technologies such as:</p>
-                                        <ul className="list-disc list-inside">
+                                        
+                                        <ul className="list-disc pl-5">
                                             <li>VueJS with App Router for a modular, component-based frontend</li>
-                                            <li>FastAPI powering high-performance RESTful APIs and logic</li>
+                                            <li>Enables users in corporate  to upload documents, get SWOT analysis, risk analysis, and decision-impact assessment with Anthropic's Claude 4 Sonnet</li>
+                                            <li>FastAPI powering high-performance RESTful APIs and logic for proper processing and analysis of the document</li>
+                                            <li>Enables users to chat with the AI assistant to get more insights from the document through components from ShadCN/UI</li>
                                             <li>Axios for efficient API communication and data handling</li>
-                                            <li>Tailwind CSS enabling clean, responsive, utility-first styling</li>
-                                            <li>ShadCN/UI providing accessible, customizable UI components</li>
+                                            <li>SQLAlchemy ORM for database management</li>
+                                            
                                         </ul>
                                         <p>Includes server-side rendering, fully responsive layout, and built-in dark mode.</p>
 
                                     </>
                                 }
-                                images={["prototype.png"]}
+                                images={["UI_drop2chat.png","drop2chat.png"]}
                             />
                             <ProjectCard
                                 title="QuickAid - Smart Campus Helpdesk Platform"
@@ -471,13 +473,39 @@ export default function Page() {
                                 images={["quickaid1.png", "az_kv.png", "az_func.png", "az_backend.png", "quickaid_thumbnail.png"]}
                             />
                             <ProjectCard
+                                title="Music Artist Website"
+                                description="A brand website to support branding, showcase music artist's work and act as an EPK."
+                                image="/music_website.png?height=400&width=600"
+                                link="https://github.com/mifzalfauzi/portfolio"
+                                demoLink="https://mifzal.co"
+                                tags={["Next.js", "Render", "TypeScript","Vercel", "FastAPI", "SendGrid API", "Spotify Embed", "Mailgun API"]}
+                                year="September 2025"
+                                details={
+                                    <>
+                                        
+                                        <ul className="list-disc pl-5">
+                                            <li>Next.js creates a responsive web design and very good UX</li>
+                                            <li>Contact artist via email or provided form which implements SendGrid API through RESTful API calls with FastAPI</li>
+                                            <li>Spotify Embed for music which enables viewers to see the artist's discography</li>
+                                            <li>Social media links for viewers to follow the artist</li>
+                                            <li>Downloadable EPK for the artist</li>
+                                          
+                        
+                                        </ul>
+                                       
+                                    </>
+                                }
+                                images={["music_website.png","music.png", "contact_form.png","epk_mifzal.png", ]}
+                            />
+
+                            <ProjectCard
                                 title="Personal Portfolio"
                                 description="Responsive personal portfolio developed purely with Next.js"
                                 image="/portfolio.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
                                 demoLink="https://mifzal-dev.vercel.app"
                                 tags={["Next.js"]}
-                                year="2025"
+                                year="May 2025"
                                 details={
                                     <>
                                         <p>Deployed project using technologies such as:</p>

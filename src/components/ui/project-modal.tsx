@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@
 import { Button } from "@/components/ui/button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { ReactNode, useState } from "react"
+import { ImageLightbox } from "./image-lightbox"
 
 interface ProjectModalProps {
   open: boolean
@@ -15,9 +16,16 @@ interface ProjectModalProps {
 
 export function ProjectModal({ open, onClose, title, details, images = [] }: ProjectModalProps) {
   const [current, setCurrent] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   const prev = () => setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1))
   const next = () => setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index)
+    setLightboxOpen(true)
+  }
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
@@ -38,7 +46,8 @@ export function ProjectModal({ open, onClose, title, details, images = [] }: Pro
             <img
               src={images[current]}
               alt={`Slide ${current}`}
-              className="w-full h-60 object-cover rounded-md"
+              className="w-full h-60 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => openLightbox(current)}
             />
             {/* Arrows */}
             <button
@@ -70,6 +79,13 @@ export function ProjectModal({ open, onClose, title, details, images = [] }: Pro
 
         <div className="text-sm text-muted-foreground space-y-3">{details}</div>
       </DialogContent>
+      
+      <ImageLightbox
+        images={images}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        initialIndex={lightboxIndex}
+      />
     </Dialog>
   )
 }

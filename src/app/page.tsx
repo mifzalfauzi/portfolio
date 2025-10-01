@@ -478,7 +478,7 @@ export default function Page() {
                                 image="/music_website.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
                                 demoLink="https://mifzal.co"
-                                tags={["Next.js", "Render", "TypeScript","Vercel", "FastAPI", "SendGrid API", "Spotify Embed", "Mailgun API"]}
+                                tags={["Next.js", "Render", "TypeScript", "FastAPI", "SendGrid API", "Spotify Embed", "Mailgun API"]}
                                 year="September 2025"
                                 details={
                                     <>
@@ -503,7 +503,7 @@ export default function Page() {
                                 description="Responsive personal portfolio developed purely with Next.js"
                                 image="/portfolio.png?height=400&width=600"
                                 link="https://github.com/mifzalfauzi/portfolio"
-                                demoLink="https://mifzal-dev.vercel.app"
+                                demoLink="https://mifzal.onrender.com"
                                 tags={["Next.js"]}
                                 year="May 2025"
                                 details={
@@ -512,7 +512,7 @@ export default function Page() {
                                         <ul className="list-disc list-inside">
                                             <li>Next.js 13 with App Router</li>
                                             <li>Tailwind CSS for styling</li>
-                                            <li>ShadCN/UI for components</li>
+                                            
                                         </ul>
                                         <p>Features a responsive web design.</p>
                                     </>

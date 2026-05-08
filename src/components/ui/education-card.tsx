@@ -28,7 +28,7 @@ export default function EducationCard() {
       name: "GRC Professional (GRCP)",
       issuer: "Open Compliance and Ethics Group",
       year: "2026",
-      link:""
+      link:"https://certificates.grccertify.org/9b5fd058-65db-4991-8e1e-20f04c5fee82#acc.MJrPAqvO"
     },
     {
       name: "Cyber Risk Management for Executives",

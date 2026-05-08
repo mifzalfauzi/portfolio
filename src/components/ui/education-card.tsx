@@ -28,11 +28,25 @@ export default function EducationCard() {
       name: "GRC Professional (GRCP)",
       issuer: "Open Compliance and Ethics Group",
       year: "2026",
+      link:""
+    },
+    {
+      name: "Cyber Risk Management for Executives",
+      issuer: "FAIR Institute",
+      year: "2026",
+      link: "https://www.coursera.org/account/accomplishments/specialization/YY2HHS94745C"
+    },
+    {
+      name: "Splunk Accredited Security Sales Rep I",
+      issuer: "Splunk",
+      year: "2026",
+      link:"https://www.credly.com/badges/b3692d0e-cc54-4880-a1ec-8dd70b2fdb67/public_url"
     },
     {
       name: "Splunk Core Certified Power User",
       issuer: "Splunk",
       year: "2026",
+      link:"https://www.credly.com/badges/fc0c118d-2c04-4b1f-ba78-fed833c1048c/public_url"
     },
     {
       name: "Graduate Technologist (GTech)",
@@ -43,6 +57,19 @@ export default function EducationCard() {
       name: "Certified AI Security & Risk (CAISR)",
       issuer: "Red Team Leaders",
       year: "2026",
+      link: "https://courses.redteamleaders.com/exam-completion/95f19fbb46a09cc1"
+    },
+    {
+      name: "SQL Advanced",
+      issuer: "HackerRank",
+      year: "2026",
+      link: "https://www.hackerrank.com/certificates/530c7c0d83cd"
+    },
+    {
+      name: "Data Engineering Master",
+      issuer: "Altair – RapidMiner Academy",
+      year: "2026",
+      link: "https://openbadgefactory.com/obv3/credentials/96299aa144a5de8f771f090bab84131b87efea79"
     },
     // {
     //   name: "Microsoft Certified: Azure Developer Associate",
@@ -71,12 +98,7 @@ export default function EducationCard() {
       issuer: "LHI Consulting",
       year: "2023",
     },
-    {
-      name: "Data Engineering Professional",
-      issuer: "Altair – RapidMiner Academy",
-      year: "2023",
-      link: "https://openbadgefactory.com/v1/assertion/94367f6f526e32f87593f8a53f56b196fa158c45"
-    },
+    
     // {
     //   name: "Classical Guitar Studies - Grade 6",
     //   issuer: "Yamaha Corporation",

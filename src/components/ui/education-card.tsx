@@ -25,10 +25,30 @@ export default function EducationCard() {
 
   const certifications = [
     {
-      name: "Microsoft Certified: Azure Developer Associate",
-      issuer: "Microsoft",
-      year: "Expected 2025",
+      name: "GRC Professional (GRCP)",
+      issuer: "Open Compliance and Ethics Group",
+      year: "2026",
     },
+    {
+      name: "Splunk Core Certified Power User",
+      issuer: "Splunk",
+      year: "2026",
+    },
+    {
+      name: "Graduate Technologist (GTech)",
+      issuer: "Malaysia Board of Technologists",
+      year: "2026",
+    },
+    {
+      name: "Certified AI Security & Risk (CAISR)",
+      issuer: "Red Team Leaders",
+      year: "2026",
+    },
+    // {
+    //   name: "Microsoft Certified: Azure Developer Associate",
+    //   issuer: "Microsoft",
+    //   year: "Expected 2025",
+    // },
     {
       name: "ICDL Profile — Document, Spreadsheets, Teamwork",
       issuer: "ICDL Asia",

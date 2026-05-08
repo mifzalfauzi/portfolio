@@ -4,6 +4,12 @@ import { School, Award, Calendar, LinkIcon } from "lucide-react"
 export default function EducationCard() {
   const education = [
     {
+      degree: "Master of Science in Business Intelligence and Analytics",
+      institution: "Universiti Teknologi Malaysia",
+      year: "2026 - Expected Aug 2028",
+      description: "",
+    },
+    {
       degree: "Bachelor of Software Engineering with Honours (Information System Development)",
       institution: "National University of Malaysia",
       year: "2021 - 2025",

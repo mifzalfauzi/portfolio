@@ -14,20 +14,20 @@ interface WorkExperienceItem {
 export default function WorkExperience() {
   const experiences: WorkExperienceItem[] = [
     {
-      position: "Trainee - MyMahir Programme (Microsoft Azure Cloud Developer Associate Track)",
-      company: "Knowledgecom",
-      period: "May 2025 - Sep 2025",
-      location: "Kuala Lumpur, Malaysia",
+      position: "Assistant Manager, Security Analyst L1",
+      company: "TM One",
+      period: "December 2025 - Present",
+      location: "Cyberjaya, Malaysia",
       description: [
-        "Attended structured weekend classes on Microsoft Azure Development, covering core services such as Blob Storage, Cosmos DB, Key Vault, RBAC, and Event Grid",
+        "Maintain 80% SLA compliance and sub-30 minute MTTA across multi-tier client incident (P1 critical to P4 	low/minor) severities, while ensuring regulatory audit compliance (PDPA)",
 
-        "Gained hands-on knowledge of Azure infrastructure and applied it in practical labs",
+        "Triaged 8,000+ weekly security alerts and traffic logs for enterprise clients across 12-hour SOC rotations, 	normalizing high-entropy, multi-source logs to optimize SIEM detection and reduce alert noise",
 
-        "Delivered a Capstone Project (QuickAid Student Helpdesk), developed using Microsoft Azure services to simulate a real-world enterprise solution",
+        "Delivered 100% L2 framework compliance through high-fidelity incident escalation for DDoS and phishing events, maintaining low misclassification rates during critical triage",
 
-        "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
+        // "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
       ],
-      skills: ["Microsoft Azure", "Azure Key Vault", "Azure Blob Storage", "Azure Cosmos DB", "Azure RBAC", "Azure Event Grid", "Azure App Service", "Azure Functions"]
+      skills: ["Security Operations", "SIEM", "XDR", "Alert Triage", "Compliance", "Incident Response"]
     },
     {
       position: "Technical Developer Intern",

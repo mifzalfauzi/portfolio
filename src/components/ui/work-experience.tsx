@@ -23,7 +23,7 @@ export default function WorkExperience() {
 
         "Triaged 8,000+ weekly security alerts and traffic logs for enterprise clients across 12-hour SOC rotations, 	normalizing high-entropy, multi-source logs to optimize SIEM detection and reduce alert noise",
 
-        "Delivered 100% L2 framework compliance through high-fidelity incident escalation for DDoS and phishing events, maintaining low misclassification rates during critical triage",
+        "Delivered 100% L2 framework compliance through high-fidelity incident escalation for DDoS and phishing events, maintaining low misclassification rates during critical triage",
 
         // "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
       ],

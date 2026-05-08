@@ -240,18 +240,7 @@ export default function Page() {
                                 Mifzal Fauzi
                             </button>
 
-                            <button
-                                onClick={() => scrollToSection('education')}
-                                className="transition-colors hover:text-foreground/80 cursor-pointer"
-                            >
-                                Education
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('education')}
-                                className="transition-colors hover:text-foreground/80 cursor-pointer"
-                            >
-                                Achievements
-                            </button>
+                            
                             <button
                                 onClick={() => scrollToSection('experience')}
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
@@ -263,6 +252,18 @@ export default function Page() {
                                 className="transition-colors hover:text-foreground/80 cursor-pointer"
                             >
                                 Projects
+                            </button>
+                            <button
+                                onClick={() => scrollToSection('education')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
+                                Education
+                            </button>
+                            <button
+                                onClick={() => scrollToSection('education')}
+                                className="transition-colors hover:text-foreground/80 cursor-pointer"
+                            >
+                                Achievements
                             </button>
                             <button
                                 onClick={() => scrollToSection('tech-stack-gallery')}

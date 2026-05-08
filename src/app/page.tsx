@@ -372,25 +372,7 @@ export default function Page() {
                 </AnimatedSection>
 
 
-                <AnimatedSection id="education">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                        <AnimatedHeading>
-                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                                Education & Achievements
-                            </h2>
-                        </AnimatedHeading>
-                        <motion.div
-                            className="grid gap-8 md:grid-cols-2"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <EducationCard />
-                            <AchievementsCard />
-                        </motion.div>
-                    </div>
-                </AnimatedSection>
+                
                 <AnimatedSection id="experience">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                         <AnimatedHeading>
@@ -564,6 +546,26 @@ export default function Page() {
                                 }
                                 images={["group.jpg", "sams.jpg"]}
                             />
+                        </motion.div>
+                    </div>
+                </AnimatedSection>
+
+                <AnimatedSection id="education">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                        <AnimatedHeading>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+                                Education & Achievements
+                            </h2>
+                        </AnimatedHeading>
+                        <motion.div
+                            className="grid gap-8 md:grid-cols-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <EducationCard />
+                            <AchievementsCard />
                         </motion.div>
                     </div>
                 </AnimatedSection>

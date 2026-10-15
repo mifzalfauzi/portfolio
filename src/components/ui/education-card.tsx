@@ -7,20 +7,20 @@ export default function EducationCard() {
       degree: "Master of Science in Business Intelligence and Analytics",
       institution: "Universiti Teknologi Malaysia",
       year: "2026 - Expected Aug 2028",
-      description: "",
+      description: "Current CGPA (Semester 2): 4.00 ",
     },
     {
       degree: "Bachelor of Software Engineering with Honours (Information System Development)",
       institution: "National University of Malaysia",
       year: "2021 - 2025",
-      description: "CGPA : 3.74 (Distinction)",
+      description: "CGPA: 3.74 (Distinction)",
     },
-    {
-      degree: "Foundation in Science",
-      institution: "MARA University of Technology",
-      year: "2020 - 2021",
-      description: "CGPA : 3.89/4.0",
-    },
+    // {
+    //   degree: "Foundation in Science",
+    //   institution: "MARA University of Technology",
+    //   year: "2020 - 2021",
+    //   description: "CGPA : 3.89/4.0",
+    // },
   ]
 
   const certifications = [
@@ -76,28 +76,14 @@ export default function EducationCard() {
     //   issuer: "Microsoft",
     //   year: "Expected 2025",
     // },
-    {
-      name: "ICDL Profile — Document, Spreadsheets, Teamwork",
-      issuer: "ICDL Asia",
-      year: "2025",
-      link: "https://profile.icdlasia.org/227857d9-5934-4623-892c-11869cde2a8b#acc.r1UDVtHL"
-    },
+   
     // {
     //   name: "Google Professional Cloud Developer",
     //   issuer: "Google Cloud",
     //   year: "2021",
     // },
-    {
-      name: "Fundamentals of Cloud Computing",
-      issuer: "RunCloud",
-      year: "2024",
-      link: "https://cert.runcloud.education/en/verify/74089342945174?ref=email"
-    },
-    {
-      name: "YTM Scholars: Role Model Now, Digital Leaders Tomorrow",
-      issuer: "LHI Consulting",
-      year: "2023",
-    },
+    
+    
     
     // {
     //   name: "Classical Guitar Studies - Grade 6",

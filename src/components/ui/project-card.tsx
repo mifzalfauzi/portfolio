@@ -15,7 +15,7 @@ interface ProjectCardProps {
   demoLink?: string
   tags: string[]
   year: string
-  details: ReactNode
+  details?: ReactNode
   images?: string[]
 }
 
@@ -70,11 +70,11 @@ export default function ProjectCard({ title, description, image, link, demoLink,
       <Button asChild variant="default" size="sm" className="gap-1 cursor-pointer">
         <Link href={demoLink} target="_blank">
           <ExternalLink className="h-4 w-4" />
-          Live Demo
+          Website
         </Link>
       </Button>
     )}
-
+    {details && (
     <Button
       variant="default"
       size="sm"
@@ -84,6 +84,7 @@ export default function ProjectCard({ title, description, image, link, demoLink,
       <ExternalLink className="h-4 w-4" />
       Details
     </Button>
+    )}
   </CardFooter>
 </Card>
 

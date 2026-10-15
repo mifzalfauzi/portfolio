@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 // import { Typewriter } from "react-simple-typewriter"
 import { CodepenIcon, DatabaseIcon, GitGraphIcon, Github, HashIcon, Instagram, Linkedin, Mail, NetworkIcon, Twitter, XIcon, ChevronDown, Menu, X, GraduationCap, Trophy, Briefcase, Code2, Layers, Brain } from "lucide-react"
 import Link from "next/link"
+import { SiHackthebox } from "react-icons/si"
 import Image from "next/image"
 import ContactForm from "@/components/ui/contact-form"
 import ProjectCard from "@/components/ui/project-card"
@@ -305,7 +306,7 @@ export default function Page() {
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
                                         <span className="text-primary">
                                             <TypewriterComponent
-                                                words={["Security Operations Analyst", "Endpoint & Network Log Analysis", "Security Event Monitoring", "Incident Response"]}
+                                                words={["Security Operations Analyst", "Network Log Analysis", "Endpoint Alert Investigation", "Security Event Monitoring", "Incident Response"]}
                                                 typeSpeed={70}
                                                 deleteSpeed={50}
                                                 delayBetweenWords={1000}
@@ -330,6 +331,12 @@ export default function Page() {
                                         <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
                                             <Github className="h-4 w-4" />
                                             <span className="sr-only">GitHub</span>
+                                        </Button>
+                                    </Link>
+                                    <Link href="https://profile.hackthebox.com/profile/019c755e-3259-7307-8fc8-2ce5f5202259" target="_blank">
+                                        <Button variant="outline" size="icon" className="rounded-full cursor-pointer">
+                                            <SiHackthebox className="h-4 w-4" />
+                                            <span className="sr-only">LinkedIn</span>
                                         </Button>
                                     </Link>
                                     <Link href="https://linkedin.com/in/mifzal" target="_blank">
@@ -408,7 +415,7 @@ export default function Page() {
                             viewport={{ once: false }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <ProjectCard
+                            {/* <ProjectCard
                                 title=" Document Analyzer and Chatbot for Corporate Users (Complete Prototype)"
                                 description=" AI platform for corporate users delivering document insights, risk and SWOT analysis, and decision-impact assessment."
                                 image="/main_drop2chat_page.png?height=400&width=600"
@@ -433,8 +440,17 @@ export default function Page() {
                                     </>
                                 }
                                 images={["UI_drop2chat.png","drop2chat.png"]}
-                            />
+                            /> */}
                             <ProjectCard
+                                title=" .lat3st"
+                                description="Collection of various write-ups, walkthroughs and notes covering SOC investigations, forensics and hands-on lab challenges."
+                                image=""
+                                demoLink="https://www.drop2chat.com/main"
+                                link=""
+                                tags={["SOC", "Windows Event Logs", "Threat Intelligence", "Forensics", "HTB", "Cybersecurity Notes"]}
+                                year="2026"
+                            />
+                            {/* <ProjectCard
                                 title="QuickAid - Smart Campus Helpdesk Platform"
                                 description=" Smart campus helpdesk platform built on Microsoft Azure, enabling automated ticketing, request tracking, and actionable insights for students and staff."
                                 image="/quickaid_thumbnail.png?height=250&width=400"
@@ -545,7 +561,7 @@ export default function Page() {
                                     </>
                                 }
                                 images={["group.jpg", "sams.jpg"]}
-                            />
+                            /> */}
                         </motion.div>
                     </div>
                 </AnimatedSection>

@@ -1,9 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Briefcase, Calendar, MapPin } from "lucide-react"
+import Image from "next/image"
 
 interface WorkExperienceItem {
   position: string
+  image: string
   company: string
   location: string
   period: string
@@ -14,7 +16,8 @@ interface WorkExperienceItem {
 export default function WorkExperience() {
   const experiences: WorkExperienceItem[] = [
     {
-      position: "Assistant Manager, Security Analyst L1",
+      position: "Assistant Manager, L1 Security Analyst ",
+      image: "/tm.jpg",
       company: "TM One",
       period: "December 2025 - Present",
       location: "Malaysia",
@@ -33,10 +36,11 @@ export default function WorkExperience() {
 
         // "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
       ],
-      skills: ["Security Operations", "XDR", "Alert Triage", "Endpoint & Network Log Analysis", "Security Event Monitoring", "Compliance", "Incident Response"]
+      skills: ["Security Operations", "XDR", "Alert Triage", "OSINT","Windows Event Security", "Endpoint & Network Log Analysis", "Security Event Monitoring", "Compliance", "Incident Response"]
     },
     {
       position: "Technical Developer Intern",
+      image: "/agtiv_consulting_logo.jpg",
       company: "AGTIV Consulting Sdn. Bhd.",
       location: "Kuala Lumpur, Malaysia",
       period: "Aug 2024 - Jan 2025",
@@ -87,45 +91,57 @@ export default function WorkExperience() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-8">
-        {experiences.map((exp, index) => (
-          <div key={index} className="relative border-l-2 border-primary/20 pl-6 pb-2">
-            <div className="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1"></div>
+  {experiences.map((exp, index) => (
+    <div key={index} className="relative border-l-2 border-primary/20 pl-6 pb-2">
+      <div className="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1"></div>
 
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
-              <h3 className="font-bold text-lg">{exp.position}</h3>
-              <div className="flex items-center text-sm text-muted-foreground">
-                <Calendar className="h-4 w-4 mr-1" />
-                <span>{exp.period}</span>
-              </div>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
+        <h3 className="font-bold text-lg">{exp.position}</h3>
+        <div className="flex items-center text-sm text-muted-foreground">
+          <Calendar className="h-4 w-4 mr-1" />
+          <span>{exp.period}</span>
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
+        <div className="flex items-center gap-2">
+          {exp.image && (
+            <div className="relative w-8 h-8 shrink-0 overflow-hidden">
+              <Image
+                src={exp.image}
+                alt={`${exp.company} logo`}
+                fill
+                className="object-cover"
+              />
             </div>
+          )}
+          <span className="font-medium">{exp.company}</span>
+        </div>
+        <span className="hidden md:inline text-muted-foreground">•</span>
+        <div className="flex items-center text-sm text-muted-foreground">
+          <MapPin className="h-3 w-3 mr-1" />
+          <span>{exp.location}</span>
+        </div>
+      </div>
 
-            <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
-              <span className="font-medium">{exp.company}</span>
-              <span className="hidden md:inline text-muted-foreground">•</span>
-              <div className="flex items-center text-sm text-muted-foreground">
-                <MapPin className="h-3 w-3 mr-1" />
-                <span>{exp.location}</span>
-              </div>
-            </div>
-
-            <ul className="list-disc pl-5 space-y-1 mb-3">
-              {exp.description.map((item, i) => (
-                <li key={i} className="text-sm">
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-2 mt-3">
-              {exp.skills.map((skill, i) => (
-                <Badge key={i} variant="outline" className="bg-primary/5">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
+      <ul className="list-disc pl-5 space-y-1 mb-3">
+        {exp.description.map((item, i) => (
+          <li key={i} className="text-sm">
+            {item}
+          </li>
         ))}
-      </CardContent>
+      </ul>
+
+      <div className="flex flex-wrap gap-2 mt-3">
+        {exp.skills.map((skill, i) => (
+          <Badge key={i} variant="outline" className="bg-primary/5">
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  ))}
+</CardContent>
     </Card>
   )
 }

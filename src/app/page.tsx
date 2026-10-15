@@ -590,12 +590,12 @@ export default function Page() {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                         <AnimatedHeading>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
-                                Technology Expertise
+                                Technical Skills
                             </h2>
                         </AnimatedHeading>
                         <AnimatedHeading>
                             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-                                Technical skills across different tech categories, based on years of experience.
+                                Expertise across various categories.
                             </p>
                         </AnimatedHeading>
                         <motion.div
@@ -710,7 +710,7 @@ export default function Page() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between">
                     <div>
                         <div className="text-lg font-semibold">Mifzal</div>
-                        <p className="text-sm text-muted-foreground">Security Analyst</p>
+                        <p className="text-sm text-muted-foreground">Cybersecurity Professional</p>
                     </div>
                     <div className="flex flex-col gap-2 md:flex-row md:gap-4">
                         <button

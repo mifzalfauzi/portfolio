@@ -12,6 +12,10 @@ import {
   FileCode,
   Braces,
   Layers,
+  Activity,
+  Radar,
+  ShieldCheck,
+  Eye,
   Globe,
   LayoutGrid,
   Workflow,
@@ -30,15 +34,26 @@ import {
   Pilcrow,
   Beaker,
   PictureInPictureIcon,
+  FileText,
+  Bug,
+  Network,
+  Fingerprint,
+  Shield,
+  ChefHat,
+  ChefHatIcon,
 } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import type { JSX } from "react"
+import { FaMagnifyingGlass } from "react-icons/fa6"
+import { GiMagnifyingGlass } from "react-icons/gi"
+import { FaTools } from "react-icons/fa"
+import { GoTools } from "react-icons/go"
 
 interface Technology {
   name: string
   icon: JSX.Element
-  years: number
+  years?: number
 }
 
 interface TechCategory {
@@ -49,76 +64,73 @@ interface TechCategory {
 
 const techCategories: TechCategory[] = [
   {
-    name: "Frontend",
-    icon: <Code className="h-5 w-5" />,
+    name: "Security Operations",
+    icon: <Eye className="h-5 w-5" />,
     technologies: [
-      { name: "HTML", icon: <FileCode className="h-10 w-10 text-orange-500" />, years: 4 },
-      { name: "CSS", icon: <FileType className="h-10 w-10 text-blue-500" />, years: 4 },
-      { name: "JavaScript", icon: <Braces className="h-10 w-10 text-yellow-500" />, years: 4 },
-      { name: "Razor Pages", icon: <FileType2 className="h-10 w-10 text-purple-500" />, years: 1 },
-      { name: "Django Views", icon: <LayoutGrid className="h-10 w-10 text-green-600" />, years: 1 },
-      { name: "NextJS", icon: <Layers className="h-10 w-10 text-gray-800 dark:text-gray-200" />, years: 1 },
-      { name: "VueJS", icon: <PictureInPictureIcon className="h-10 w-10 text-red-800 dark:text-red-500" />, years: 1 },
+      { name: "Splunk ES", icon: <Activity className="h-10 w-10 text-green-600" /> },
+      { name: "IBM QRadar", icon: <Radar className="h-10 w-10 text-blue-600" /> },
+      { name: "Palo Alto Cortex XDR", icon: <ShieldCheck className="h-10 w-10 text-orange-500" /> },
+      { name: "TrendAI Vision One", icon: <Eye className="h-10 w-10 text-red-600" /> },
     ],
   },
   {
-    name: "Backend",
-    icon: <Server className="h-5 w-5" />,
+    name: "Detection & Analysis",
+    icon: <GiMagnifyingGlass className="h-5 w-5" />,
     technologies: [
-      { name: ".NET MVC", icon: <Globe className="h-10 w-10 text-purple-600" />, years: 1 },
-      { name: ".NET Web API", icon: <Server className="h-10 w-10 text-blue-600" />, years: 1 },
-      { name: "RESTful APIs", icon: <Workflow className="h-10 w-10 text-green-500" />, years: 4 },
-      { name: "Django", icon: <LayoutGrid className="h-10 w-10 text-green-600" />, years: 1 },
-      { name: "FastAPI", icon: <Cpu className="h-10 w-10 text-teal-500" />, years: 1 },
+      { name: "Windows Event Logs", icon: <FileText className="h-10 w-10 text-blue-500" /> },
+      { name: "Sysmon Analysis", icon: <Bug className="h-10 w-10 text-purple-600" /> },
+      { name: "Network Log Analysis", icon: <Network className="h-10 w-10 text-teal-500" /> },
+      { name: "IOC Enrichment", icon: <Fingerprint className="h-10 w-10 text-yellow-600" /> },
     ],
   },
   {
-    name: "Database",
-    icon: <Database className="h-5 w-5" />,
+    name: "Tools",
+    icon: <GoTools className="h-5 w-5" />,
     technologies: [
-      { name: "Microsoft SQL Server", icon: <Database className="h-10 w-10 text-red-600" />, years: 1 },
-      { name: "MySQL", icon: <Database className="h-10 w-10 text-blue-600" />, years: 3 },
-      { name: "PostgreSQL (Supabase)", icon: <Database className="h-10 w-10 text-green-600" />, years: 1 },
+      { name: "Wireshark", icon: <Network className="h-10 w-10 text-blue-600" /> },
+      { name: "Event Viewer (EVTX)", icon: <FileText className="h-10 w-10 text-gray-600 dark:text-gray-300" /> },
+      { name: "VirusTotal", icon: <Shield className="h-10 w-10 text-blue-500" /> },
+      { name: "AbuseIPDB", icon: <Globe className="h-10 w-10 text-red-500" /> },
+      { name: "IBM X-Force", icon: <Radar className="h-10 w-10 text-indigo-500" /> },
+      { name: "CyberChef", icon: <ChefHatIcon className="h-10 w-10 text-yellow-500" /> },
     ],
   },
   {
-    name: "Libraries",
+    name: "Data Analytics",
     icon: <Book className="h-5 w-5" />,
     technologies: [
-      { name: "Bootstrap", icon: <Shovel className="h-10 w-10 text-blue-600" />, years: 3 },
-      { name: "Tailwind", icon: <Wind className="h-10 w-10 text-blue-600" />, years: 3 },
-      { name: "Axios", icon: <Axis3D className="h-10 w-10 text-orange-600" />, years: 1 },
-      { name: "Alembic", icon: <Pilcrow className="h-10 w-10 text-yellow-600" />, years: 1 },
-      { name: "SQLAlchemy", icon: <Beaker className="h-10 w-10 text-green-600" />, years: 1 },
+      { name: "Splunk Search Processing", icon: <Code className="h-10 w-10 text-green-600" /> },
+      { name: "Power BI", icon: <Activity className="h-10 w-10 text-yellow-500" /> },
+      { name: "SQL", icon: <Database className="h-10 w-10 text-blue-600" /> },
     ],
   },
   {
     name: "Programming Languages",
     icon: <Terminal className="h-5 w-5" />,
     technologies: [
-      { name: "C#", icon: <Hash className="h-10 w-10 text-purple-600" />, years: 1 },
-      { name: "Python", icon: <FileCode className="h-10 w-10 text-yellow-600" />, years: 1 },
-      { name: "Java", icon: <Cpu className="h-10 w-10 text-red-500" />, years: 2 },
-      { name: "PHP", icon: <FileJson className="h-10 w-10 text-indigo-500" />, years: 2 },
+      { name: "C#", icon: <Hash className="h-10 w-10 text-purple-600" /> },
+      { name: "Python", icon: <FileCode className="h-10 w-10 text-yellow-600" /> },
+      // { name: "Java", icon: <Cpu className="h-10 w-10 text-red-500" />, years: 2 },
+      // { name: "PHP", icon: <FileJson className="h-10 w-10 text-indigo-500" />, years: 2 },
     ],
   },
-  {
-    name: "DevOps",
-    icon: <GitBranch className="h-5 w-5" />,
-    technologies: [
-      { name: "Git", icon: <GitBranch className="h-10 w-10 text-orange-600" />, years: 1 },
-      { name: "GitHub", icon: <Github className="h-10 w-10 text-gray-800 dark:text-gray-200" />, years: 1 },
-      { name: "Sourcetree", icon: <GitFork className="h-10 w-10 text-blue-500" />, years: 1 },
-    ],
-  },
-  {
-    name: "Methodologies",
-    icon: <Users className="h-5 w-5" />,
-    technologies: [
-      { name: "Agile", icon: <Workflow className="h-10 w-10 text-blue-500" />, years: 4 },
-      { name: "Scrum Framework", icon: <ClipboardList className="h-10 w-10 text-green-500" />, years: 3 },
-    ],
-  },
+  // {
+  //   name: "DevOps",
+  //   icon: <GitBranch className="h-5 w-5" />,
+  //   technologies: [
+  //     { name: "Git", icon: <GitBranch className="h-10 w-10 text-orange-600" />, years: 1 },
+  //     { name: "GitHub", icon: <Github className="h-10 w-10 text-gray-800 dark:text-gray-200" />, years: 1 },
+  //     { name: "Sourcetree", icon: <GitFork className="h-10 w-10 text-blue-500" />, years: 1 },
+  //   ],
+  // },
+  // {
+  //   name: "Methodologies",
+  //   icon: <Users className="h-5 w-5" />,
+  //   technologies: [
+  //     { name: "Agile", icon: <Workflow className="h-10 w-10 text-blue-500" />, years: 4 },
+  //     { name: "Scrum Framework", icon: <ClipboardList className="h-10 w-10 text-green-500" />, years: 3 },
+  //   ],
+  // },
 ]
 
 export default function TechStackGallery() {
@@ -151,8 +163,8 @@ export default function TechStackGallery() {
 
 
   const hasEnoughToScroll = isMobile
-    ? activeCategory.technologies.length > 2
-    : activeCategory.technologies.length > 3
+    ? activeCategory.technologies.length > 5
+    : activeCategory.technologies.length > 6
 
 
   const shouldAutoScrollMobile = isMobile && activeCategory.technologies.length > 2
@@ -325,7 +337,7 @@ export default function TechStackGallery() {
           <span>{activeCategory.name}</span>
         </h3>
         <p className="text-muted-foreground mt-2">
-          {activeCategory.technologies.length} technologies
+          {activeCategory.technologies.length} items
           {/* •{" "} */}
           {/* {activeCategory.technologies.reduce((sum, tech) => sum + tech.years, 0)} years of combined experience */}
         </p>
@@ -393,10 +405,11 @@ export default function TechStackGallery() {
 
                 <h4 className="font-medium text-base text-center mb-2">{tech.name}</h4>
 
-
+                {tech.years && (
                 <div className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full">
                   {tech.years} {tech.years === 1 ? "year" : "years"}
                 </div>
+                )}
               </div>
             </div>
           ))}

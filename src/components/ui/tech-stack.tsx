@@ -7,7 +7,7 @@ import { JSX } from "react"
 interface Skill {
   name: string
   proficiency: number // 0-100
-  years: number
+  years?: number
   logo?: JSX.Element
 
 }
@@ -20,7 +20,7 @@ interface TechCategory {
 
 const technologies: TechCategory[] = [
   {
-    name: "Frontend",
+    name: "Security Operations",
     icon: <Code className="h-5 w-5" />,
     skills: [
       { name: "HTML", proficiency: 95, years: 3, logo: <HashIcon className="h-5 w-5"/> },

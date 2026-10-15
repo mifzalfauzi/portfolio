@@ -17,17 +17,23 @@ export default function WorkExperience() {
       position: "Assistant Manager, Security Analyst L1",
       company: "TM One",
       period: "December 2025 - Present",
-      location: "Cyberjaya, Malaysia",
+      location: "Malaysia",
       description: [
-        "Maintain 80% SLA compliance and sub-30 minute MTTA across multi-tier client incident (P1 critical to P4 	low/minor) severities, while ensuring regulatory audit compliance (PDPA)",
+        "Investigated a 2,000+ event brute-force alert on a client domain controller, analysing NTLM authentication failures (Event ID 4776) and tracing them to vendor accounts with expired credentials, escalating to L2 with root cause identified to support quick confirmation and client clean-up",
 
-        "Triaged 8,000+ weekly security alerts and traffic logs for enterprise clients across 12-hour SOC rotations, 	normalizing high-entropy, multi-source logs to optimize SIEM detection and reduce alert noise",
+        "Maintained sub-30-minute target for enterprise clients in 2026 and met over 90% strict 15-minute SLA compliance on P1 to P4 incidents with 100% escalation adherence",
 
-        "Delivered 100% L2 framework compliance through high-fidelity incident escalation for DDoS and phishing events, maintaining low misclassification rates during critical triage",
+        "Monitored 1,200+ weekly enterprise events within a sub-1% miss rate KPI across various security platforms (Splunk ES, IBM QRadar, TrendAI Vision One, Palo Alto Cortex XDR)",
+
+        "Escalated around 5-10 cases to clients monthly after correlating SIEM and XDR alerts to validate findings, rebuild timelines, extract IOCs and identify affected assets for client remediation strategies",
+
+        "Reviewed security alerts on TM One's Cloud Alpha platform, enriching and validating IPs, domains and file hashes with OSINT sources such as VirusTotal, IBM X-Force, and AbuseIPDB to assess suspicious activity on cloud-hosted workloads and firewalls, extending coverage beyond on-premises environments",
+
+        "Authored client-facing incident notifications and shift handover reports to keep 24/7 operations continuous and liaised with vendor support to resolve security platform issues affecting monitoring"
 
         // "Attempted Microsoft Certified: Azure Developer Associate (AZ-204) certification, scoring 603/1000 on first attempt, currently preparing for retake to achieve certification"
       ],
-      skills: ["Security Operations", "SIEM", "XDR", "Alert Triage", "Compliance", "Incident Response"]
+      skills: ["Security Operations", "XDR", "Alert Triage", "Endpoint & Network Log Analysis", "Security Event Monitoring", "Compliance", "Incident Response"]
     },
     {
       position: "Technical Developer Intern",

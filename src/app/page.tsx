@@ -299,13 +299,13 @@ export default function Page() {
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex-1 space-y-4">
                                 <AnimatedHeading>
-                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi | SWE (Information Systems) | Yayasan TM Future Leaders Scholar</h2>
+                                    <h2 className="text-xl font-semibold tracking-tight text-muted-foreground">Mifzal Fauzi | Cybersecurity Professional</h2>
                                 </AnimatedHeading>
                                 <AnimatedHeading>
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
                                         <span className="text-primary">
                                             <TypewriterComponent
-                                                words={["Entry-Level Web Developer", "Entry-Level Systems Developer", "Aspiring Software Engineer"]}
+                                                words={["Security Operations Analyst", "Endpoint & Network Log Analysis", "Security Event Monitoring", "Incident Response"]}
                                                 typeSpeed={70}
                                                 deleteSpeed={50}
                                                 delayBetweenWords={1000}
@@ -316,7 +316,7 @@ export default function Page() {
                                 </AnimatedHeading>
                                 <AnimatedHeading>
                                     <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                                        Building digital experiences with modern technologies. Focused on creating elegant solutions to complex problems.
+                                    Monitoring, investigating and reporting on security threats, with a growing focus on digital forensics and incident response.
                                     </p>
                                 </AnimatedHeading>
                                 <motion.div
@@ -694,7 +694,7 @@ export default function Page() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between">
                     <div>
                         <div className="text-lg font-semibold">Mifzal</div>
-                        <p className="text-sm text-muted-foreground">Entry-Level Web & Systems Developer</p>
+                        <p className="text-sm text-muted-foreground">Security Analyst</p>
                     </div>
                     <div className="flex flex-col gap-2 md:flex-row md:gap-4">
                         <button
